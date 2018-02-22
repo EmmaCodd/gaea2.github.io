@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="gaea2" />
+
+
+
+<meta name="description" content="内存泄露是指一块被分配的内存既不能使用，又不能回收，直到浏览器进程结束。在C++中，因为是手工跟踪内存的使用情况，这造成了很多问题。而在编写JavaScript 程序时，开发人员不用再关心内存使用问题，所需内存的分配以及无用内存的回收完全实现了自动管理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js内存泄漏">
+<meta property="og:url" content="http://yoursite.com/2016/11/11/js内存泄漏/index.html">
+<meta property="og:site_name" content="gaea2">
+<meta property="og:description" content="内存泄露是指一块被分配的内存既不能使用，又不能回收，直到浏览器进程结束。在C++中，因为是手工跟踪内存的使用情况，这造成了很多问题。而在编写JavaScript 程序时，开发人员不用再关心内存使用问题，所需内存的分配以及无用内存的回收完全实现了自动管理。">
+<meta property="og:image" content="http://yoursite.com/images/acfun.jpg">
+<meta property="og:updated_time" content="2016-11-11T16:53:14.454Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js内存泄漏">
+<meta name="twitter:description" content="内存泄露是指一块被分配的内存既不能使用，又不能回收，直到浏览器进程结束。在C++中，因为是手工跟踪内存的使用情况，这造成了很多问题。而在编写JavaScript 程序时，开发人员不用再关心内存使用问题，所需内存的分配以及无用内存的回收完全实现了自动管理。">
+<meta name="twitter:image" content="http://yoursite.com/images/acfun.jpg">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>js内存泄漏 | gaea2</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">gaea2</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">gaea2 | 前端笔记</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/随笔/">随笔</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" href="https://github.com/Gaea2" title="GitHub"></a>
+                            
+                                <a class="fa Email" href="mailto:mikoto.gaea2@gmail.com" title="Email"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACG/">ACG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/automation/">automation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grunt/">grunt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ps/">ps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://zzukylin.github.io/">zzukylin&#39;s blog</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">gaea2</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">gaea2</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">gaea2 | 前端笔记</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/随笔/">随笔</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/Gaea2" title="GitHub"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:mikoto.gaea2@gmail.com" title="Email"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-js内存泄漏" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/11/11/js内存泄漏/" class="article-date">
+      <time datetime="2016-11-11T15:25:59.000Z" itemprop="datePublished">2016-11-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js内存泄漏
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>内存泄露是指一块被分配的内存既不能使用，又不能回收，直到浏览器进程结束。在C++中，因为是手工跟踪内存的使用情况，这造成了很多问题。而在编写JavaScript 程序时，开发人员不用再关心内存使用问题，所需内存的分配以及无用内存的回收完全实现了自动管理。</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h4><p>内存分配有三种方式，分别是静态分配、自动分配、动态分配。</p>
+<h5 id="静态分配-Static-Allocation"><a href="#静态分配-Static-Allocation" class="headerlink" title="静态分配(Static Allocation )"></a>静态分配(Static Allocation )</h5><p>静态变量和全局变量的分配形式。如果把房间看做一个程序，我们可以把静态分配的内存当成是房间里的耐用家具。通常，它们无需释放和回收。</p>
+<h5 id="自动分配-Automatic-Allocation"><a href="#自动分配-Automatic-Allocation" class="headerlink" title="自动分配( Automatic Allocation )"></a>自动分配( Automatic Allocation )</h5><p>在栈中为局部变量分配内存的方法。栈中的内存可以随着代码块退出时的出栈操作被自动释放。</p>
+<h5 id="动态分配-Dynamic-Allocation"><a href="#动态分配-Dynamic-Allocation" class="headerlink" title="动态分配( Dynamic Allocation )"></a>动态分配( Dynamic Allocation )</h5><p>在堆中动态分配内存空间以存储数据的方式。也就是程序运行时用malloc或new申请的内存，我们需要自己用free或delete释放。动态内存的生存期由程序员自己决定。一旦忘记释放，势必造成内存泄露。</p>
+<h4 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h4><h5 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h5><p>JavaScript 中最常用的垃圾收集方式是 <code>标记清除</code>(mark-and-sweep)。当变量进入环境（如在函数中声明了一个变量）时，就为其标记为“进入环境”；当变量离开环境，则为其标记为“离开环境”。垃圾收集器在运行的时候会给存储在内存中的所有变量都加上标记。然后，它会去掉环境中的变量以及被环境中的变量引用的变量的标记。而在此之后再被加上标记的变量将被视为准备删除的变量，原因是环境中的变量已经无法访问到这些变量了。最后，垃圾收集器完成内存清除工作，销毁那些带标记的值并回收它们所占用的内存空间。</p>
+<p>垃圾回收器会定时扫描那些“离开环境”的变量，销毁那些被标记的值并回收它们所占的内存。 除了IE7以前的版本、Netscape Navigate3.0,其他版本的浏览器都用的是标记清除的垃圾回收策略。</p>
+<h5 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h5><p><code>引用计数</code>的含义是跟踪记录每个值被引用的次数，如当声明一个变量并将一个引用类型赋给该变量时，这个值的引用次数就是1，如果这个引用类型被赋给另一个变量，它的引用次数加1。相反，如果包含对这个值引用的变量又取得了另外一个值，则这个值的引用次数减1。当这个值的引用次数变成0 时，则说明没有办法再访问这个值了，因而就可以将其占用的内存空间回收回来。这样，当垃圾收集器下次再运行时，它就会释放那些引用次数为零的值所占用的内存。然而这种方式存在一个严重的问题——循环引用。如下面的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">problem</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> objA = &#123;&#125;;</span><br><span class="line">	<span class="keyword">var</span> objB = &#123;&#125;; </span><br><span class="line">	</span><br><span class="line">	objA.someOtherObject = objB;</span><br><span class="line">	objB.anotherObject = objA;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这个例子中，objA 和objB 通过各自的属性相互引用；也就是说，这两个对象的引用次数都是2。在采用标记清除策略的实现中，由于函数执行之后，这两个对象都离开了作用域，因此这种相互引用不是个问题。但在采用引用计数策略的实现中，当函数执行完毕后，objA 和objB 还将继续存在，因为它们的引用次数永远不会是0。假如这个函数被重复多次调用，就会导致大量内存得不到回收，导致内存泄漏。</p>
+<p>IE 浏览器的COM 组件产生的对象实例和网页脚本引擎产生的对象实例相互引用，也会造成内存泄漏。这也是Web 页面中常见的泄漏方式。如下面的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.getElementById(<span class="string">"some_element"</span>);</span><br><span class="line"><span class="keyword">var</span> myObject = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">myObject.element = element;</span><br><span class="line">element.someObject = myObject;</span><br></pre></td></tr></table></figure>
+<p>这个例子在一个DOM 元素（element）与一个原生JavaScript 对象（myObject）之间创建了循环引用。其中，变量myObject 有一个名为element 的属性指向element 对象；而变量element 也有一个属性名叫someObject 回指myObject。由于存在这个循环引用，即使将例子中的DOM 从页面中移除，它也永远不会被回收。</p>
+<p>为了避免类似这样的循环引用问题，最好是在不使用它们的时候手工断开原生JavaScript 对象与DOM 元素之间的连接。如下面的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">myObject.element = <span class="literal">null</span>;</span><br><span class="line">element.someObject = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<p>为了解决上述问题，IE9 把BOM 和DOM 对象都转换成了真正的JavaScript 对象。这样，就避免了两种垃圾收集算法并存导致的问题，也消除了常见的内存泄漏现象。</p>
+<hr>
+<p>接下来又是日常。</p>
+<p>总是在榜单上看到《从零开始的异世界生活》，开始抱着履行义务的心态开始看，竟然还不错，只是你萌的EMT 简直是女二嘛，雷姆雷姆才是女主吧…也看了《黑镜》第三季。</p>
+<p>美国大选结果出来了，DT in the house…“川普稳了”这句话似乎几个月前就听过，那次似乎是灯塔国酒吧枪击案，涉及LGBT？</p>
+<p>还有就是，在今天这个特别的节日，朋友圈里又自发的为阿里晒数据了，不知道什么时候会有商业文明新的突破？</p>
+<p>差点忘了，，香港最近爆发反人大释法游行（长毛也在，这事在中文媒体根本搜不到，很多大陆人对前几天的动静毫不知情，一群没有投票权的“吃瓜群众”忙着嘲笑川普的砌墙计划，精神参政伟大了。</p>
+<p>新晋偶像是AY，这么完美的大律师，嘻嘻。<img src="/images/acfun.jpg" alt="AcFun"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/12/28/Vue2.0 页码练习/">
+                    Vue2.0 页码练习
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/10/07/更新技能树总是愉快的/">
+                    更新技能树总是愉快的
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#内存分配"><span class="toc-number">1.</span> <span class="toc-text">内存分配</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#静态分配-Static-Allocation"><span class="toc-number">1.1.</span> <span class="toc-text">静态分配(Static Allocation )</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#自动分配-Automatic-Allocation"><span class="toc-number">1.2.</span> <span class="toc-text">自动分配( Automatic Allocation )</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#动态分配-Dynamic-Allocation"><span class="toc-number">1.3.</span> <span class="toc-text">动态分配( Dynamic Allocation )</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#垃圾回收"><span class="toc-number">2.</span> <span class="toc-text">垃圾回收</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#标记清除"><span class="toc-number">2.1.</span> <span class="toc-text">标记清除</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#引用计数"><span class="toc-number">2.2.</span> <span class="toc-text">引用计数</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/11/11/js内存泄漏/" data-title="js内存泄漏" data-url="http://yoursite.com/2016/11/11/js内存泄漏/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"mikotocloud"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/12/28/Vue2.0 页码练习/" title="上一篇: Vue2.0 页码练习">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/10/07/更新技能树总是愉快的/" title="下一篇: 更新技能树总是愉快的">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/わが征くは星の大海/">わが征くは星の大海</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/Vue2.0 自定义过滤器/">Vue2.0 自定义过滤器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/02/Vue2.0 自定义指令/">Vue2.0 自定义指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Vue2.0 页码练习/">Vue2.0 页码练习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/11/js内存泄漏/">js内存泄漏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/07/更新技能树总是愉快的/">更新技能树总是愉快的</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/05/虚拟机装 CentOs 7 黑屏解决办法/">虚拟机装 CentOs 7 黑屏解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/24/gulp前端自动化/">gulp前端自动化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/10/哈希表实现“数组中只出现一次的数字”/">哈希表实现“数组中只出现一次的数字”</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/jsfuck有点好玩/">jsfuck有点好玩（雾</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/20/js正则表达式/">js正则表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/15/人生无常/">人生无常</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/13/js进制转换/">js进制转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/10/也谈谈闭包/">也谈谈闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/06/grunt前端自动化/">grunt前端自动化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/25/DOCTYPE与浏览器模式浅析/">DOCTYPE与浏览器模式浅析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/Ajax中的get和post两种请求方式的异同/">Ajax中的get和post两种请求方式的异同</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/30/给github添加README/">给github添加README</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/28/hexo搭建过程/">win下Hexo博客的搭建过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/js DOM操作/">原生js学习——DOM操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/18/ps切图/">ps切图篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/22/九九八十一/">九九八十一</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/09/css center/">css居中各种实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/26/Markdown语法/">Markdown 语法学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/22/hello-world/">hello world</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018 gaea2
+            </div>
+            
+        </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

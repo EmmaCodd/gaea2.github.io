@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="gaea2" />
+
+
+
+<meta name="description" content="与grunt相比，gulp使用node.js串流(streams)使建构更快速，效率更高语法更自然,不需要编写复杂的配置文件。gulp利用来源档案当作输入，串流到一群外挂(plugins)，最后取得输出的结果，并非像grunt一样配置每一个外挂的输入与输出。
+
+Installing Gulp和grunt一样，它们都基于node.js，需要先搭建node环境。然后在命令行中cd到你的项目文件夹，在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gulp前端自动化">
+<meta property="og:url" content="http://yoursite.com/2016/09/24/gulp前端自动化/index.html">
+<meta property="og:site_name" content="gaea2">
+<meta property="og:description" content="与grunt相比，gulp使用node.js串流(streams)使建构更快速，效率更高语法更自然,不需要编写复杂的配置文件。gulp利用来源档案当作输入，串流到一群外挂(plugins)，最后取得输出的结果，并非像grunt一样配置每一个外挂的输入与输出。
+
+Installing Gulp和grunt一样，它们都基于node.js，需要先搭建node环境。然后在命令行中cd到你的项目文件夹，在">
+<meta property="og:image" content="http://yoursite.com/images/gulp_v.png">
+<meta property="og:image" content="http://yoursite.com/images/gulpjshinterr.png">
+<meta property="og:image" content="http://yoursite.com/images/gulpscripts.png">
+<meta property="og:image" content="http://yoursite.com/images/gulp.png">
+<meta property="og:updated_time" content="2016-09-24T10:03:18.798Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gulp前端自动化">
+<meta name="twitter:description" content="与grunt相比，gulp使用node.js串流(streams)使建构更快速，效率更高语法更自然,不需要编写复杂的配置文件。gulp利用来源档案当作输入，串流到一群外挂(plugins)，最后取得输出的结果，并非像grunt一样配置每一个外挂的输入与输出。
+
+Installing Gulp和grunt一样，它们都基于node.js，需要先搭建node环境。然后在命令行中cd到你的项目文件夹，在">
+<meta name="twitter:image" content="http://yoursite.com/images/gulp_v.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>gulp前端自动化 | gaea2</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">gaea2</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">gaea2 | 前端笔记</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/随笔/">随笔</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" href="https://github.com/Gaea2" title="GitHub"></a>
+                            
+                                <a class="fa Email" href="mailto:mikoto.gaea2@gmail.com" title="Email"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACG/">ACG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/automation/">automation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grunt/">grunt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ps/">ps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://zzukylin.github.io/">zzukylin&#39;s blog</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">gaea2</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">gaea2</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">gaea2 | 前端笔记</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/随笔/">随笔</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/Gaea2" title="GitHub"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:mikoto.gaea2@gmail.com" title="Email"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-gulp前端自动化" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/24/gulp前端自动化/" class="article-date">
+      <time datetime="2016-09-24T08:00:22.000Z" itemprop="datePublished">2016-09-24</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      gulp前端自动化
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/automation/">automation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>与grunt相比，gulp使用node.js串流(streams)使建构更快速，效率更高语法更自然,不需要编写复杂的配置文件。gulp利用来源档案当作输入，串流到一群外挂(plugins)，最后取得输出的结果，并非像grunt一样配置每一个外挂的输入与输出。</p>
+</blockquote>
+<h5 id="Installing-Gulp"><a href="#Installing-Gulp" class="headerlink" title="Installing Gulp"></a>Installing Gulp</h5><p>和grunt一样，它们都基于node.js，需要先搭建node环境。然后在命令行中cd到你的项目文件夹，在管理员权限下执行<code>npm install -g gulp</code>以全局安装gulp包。安装完成后，输入<code>gulp -v</code>查看gulp版本号验证gulp是否被正确安装。</p>
+<a id="more"></a>
+<p><img src="/images/gulp_v.png" alt="gulp -v"></p>
+<p>接下来在项目文件夹内建立一个package.json文件，内容为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后可以安装gulp到项目本地了，在命令行运行<code>npm install --save-dev gulp</code>，发现package.json文件得以更新，devDependencies值也被更新，表明项目需要依赖gulp。</p>
+<h5 id="Using-Gulp"><a href="#Using-Gulp" class="headerlink" title="Using Gulp"></a>Using Gulp</h5><h6 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h6><p>暂定项目执行以下任务：</p>
+<ul>
+<li>检查Javascript</li>
+<li>编译Sass（或Less之类的）文件</li>
+<li>合并Javascript</li>
+<li>压缩并重命名合并后的Javascript</li>
+</ul>
+<p>通过命令行<code>npm install gulp-sass gulp-concat gulp-uglify gulp-rename --save-dev</code>来安装依赖，其中jshint不能通过<code>npm install --save-dev gulp-jshint</code>安装，需要用<code>npm install --save-dev jshint gulp-jshint</code>，否则出错<code>Error: Cannot find module &#39;jshint/src/cli&#39;</code>，关于这个问题的更多讨论可以参考 <a href="http://stackoverflow.com/questions/33984558/gulp-error-cannot-find-module-jshint-src-cli" target="_blank" rel="external">stackoverflow | gulp-error</a></p>
+<h6 id="新建gulpfile-js"><a href="#新建gulpfile-js" class="headerlink" title="新建gulpfile.js"></a>新建gulpfile.js</h6><p>现在，组件都安装完毕，需要新建gulpfile文件以指定gulp需要完成什么任务。在项目根目录新建一个js文件并命名为gulpfile.js，把下面的代码粘贴进去：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入 gulp</span></span><br><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>); </span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入组件</span></span><br><span class="line"><span class="keyword">var</span> jshint = <span class="built_in">require</span>(<span class="string">'gulp-jshint'</span>);</span><br><span class="line"><span class="keyword">var</span> sass = <span class="built_in">require</span>(<span class="string">'gulp-sass'</span>);</span><br><span class="line"><span class="keyword">var</span> concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>);</span><br><span class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</span><br><span class="line"><span class="keyword">var</span> rename = <span class="built_in">require</span>(<span class="string">'gulp-rename'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 检查脚本</span></span><br><span class="line">gulp.task(<span class="string">'lint'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(<span class="string">'./js/*.js'</span>)</span><br><span class="line">        .pipe(jshint())</span><br><span class="line">        .pipe(jshint.reporter(<span class="string">'default'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 编译Sass</span></span><br><span class="line">gulp.task(<span class="string">'sass'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(<span class="string">'./scss/*.scss'</span>)</span><br><span class="line">        .pipe(sass())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./css'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 合并，压缩文件</span></span><br><span class="line">gulp.task(<span class="string">'scripts'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(<span class="string">'./js/*.js'</span>)</span><br><span class="line">        .pipe(concat(<span class="string">'all.js'</span>))</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./dist'</span>))</span><br><span class="line">        .pipe(rename(<span class="string">'all.min.js'</span>))</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./dist'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认任务</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    gulp.run(<span class="string">'lint'</span>, <span class="string">'sass'</span>, <span class="string">'scripts'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 监听文件变化</span></span><br><span class="line">    gulp.watch(<span class="string">'./js/*.js'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        gulp.run(<span class="string">'lint'</span>, <span class="string">'sass'</span>, <span class="string">'scripts'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>在根目录下新建一个js文件夹，放入demo来测试。如 test.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window,undefined</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    a=a+b;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  add(<span class="number">10</span>,<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
+<p>运行gulp，发现提示“js\test.js: line 5, col 13, Missing semicolon.</p>
+<p>1 error”，项目文件夹内新生成dist文件夹，内有文件all.js、all.min.js也就是合并、压缩后的文件。</p>
+<p><img src="/images/gulpjshinterr.png" alt="jshinterr"><br><img src="/images/gulpscripts.png" alt="gulpscripts"></p>
+<h5 id="STREAMS"><a href="#STREAMS" class="headerlink" title="STREAMS"></a>STREAMS</h5><p>数据流能够通过一系列的小函数来传递数据，这些函数会对数据进行修改，然后把修改后的数据传递给下一个函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gulp.src(<span class="string">'./js/*.js'</span>)</span><br><span class="line">        .pipe(uglify())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./dist'</span>));</span><br></pre></td></tr></table></figure>
+<p>在上面的例子中(压缩文件)，gulp.src()函数用字符串’./js/*.js’匹配一个文件或者文件的编号,然后创建一个对象流来代表这些文件，接着传递给uglify()函数，它接受文件对象之后返回有新压缩源文件的文件对象，最后那些输出的文件被输入gulp.dest()函数，并保存下来。</p>
+<p>而grunt不用数据流，而是使用文件，对文件执行单个任务然后保存到新的文件中，每个任务都会重复执行所有进程，文件系统频繁的处理任务会导致grunt的运行速度比gulp慢。</p>
+<p><img src="/images/gulp.png" alt="gulp"></p>
+<p>参考链接：1、<a href="https://github.com/gulpjs/gulp" target="_blank" rel="external">https://github.com/gulpjs/gulp</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、<a href="http://www.gulpjs.com.cn/" target="_blank" rel="external">http://www.gulpjs.com.cn/</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、<a href="http://www.w3ctech.com/topic/134" target="_blank" rel="external">http://www.w3ctech.com/topic/134</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、<a href="https://segmentfault.com/a/1190000000372547" target="_blank" rel="external">https://segmentfault.com/a/1190000000372547</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/10/05/虚拟机装 CentOs 7 黑屏解决办法/">
+                    虚拟机装 CentOs 7 黑屏解决办法
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/09/10/哈希表实现“数组中只出现一次的数字”/">
+                    哈希表实现“数组中只出现一次的数字”
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#Installing-Gulp"><span class="toc-number">1.</span> <span class="toc-text">Installing Gulp</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Using-Gulp"><span class="toc-number">2.</span> <span class="toc-text">Using Gulp</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#安装依赖"><span class="toc-number">2.1.</span> <span class="toc-text">安装依赖</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#新建gulpfile-js"><span class="toc-number">2.2.</span> <span class="toc-text">新建gulpfile.js</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#STREAMS"><span class="toc-number">3.</span> <span class="toc-text">STREAMS</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/09/24/gulp前端自动化/" data-title="gulp前端自动化" data-url="http://yoursite.com/2016/09/24/gulp前端自动化/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"mikotocloud"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/10/05/虚拟机装 CentOs 7 黑屏解决办法/" title="上一篇: 虚拟机装 CentOs 7 黑屏解决办法">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/09/10/哈希表实现“数组中只出现一次的数字”/" title="下一篇: 哈希表实现“数组中只出现一次的数字”">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/わが征くは星の大海/">わが征くは星の大海</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/Vue2.0 自定义过滤器/">Vue2.0 自定义过滤器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/02/Vue2.0 自定义指令/">Vue2.0 自定义指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Vue2.0 页码练习/">Vue2.0 页码练习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/11/js内存泄漏/">js内存泄漏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/07/更新技能树总是愉快的/">更新技能树总是愉快的</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/05/虚拟机装 CentOs 7 黑屏解决办法/">虚拟机装 CentOs 7 黑屏解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/24/gulp前端自动化/">gulp前端自动化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/10/哈希表实现“数组中只出现一次的数字”/">哈希表实现“数组中只出现一次的数字”</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/jsfuck有点好玩/">jsfuck有点好玩（雾</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/20/js正则表达式/">js正则表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/15/人生无常/">人生无常</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/13/js进制转换/">js进制转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/10/也谈谈闭包/">也谈谈闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/06/grunt前端自动化/">grunt前端自动化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/25/DOCTYPE与浏览器模式浅析/">DOCTYPE与浏览器模式浅析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/Ajax中的get和post两种请求方式的异同/">Ajax中的get和post两种请求方式的异同</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/30/给github添加README/">给github添加README</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/28/hexo搭建过程/">win下Hexo博客的搭建过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/js DOM操作/">原生js学习——DOM操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/18/ps切图/">ps切图篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/22/九九八十一/">九九八十一</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/09/css center/">css居中各种实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/26/Markdown语法/">Markdown 语法学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/22/hello-world/">hello world</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018 gaea2
+            </div>
+            
+        </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

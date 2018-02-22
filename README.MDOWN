@@ -1,0 +1,4 @@
+# gaea2.github.io
+个人博客[gaea2's blog](https://gaea2.github.io/)
+
+记录前端学习及日常，欢迎与我交换友链。
