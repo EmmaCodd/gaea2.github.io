@@ -15,22 +15,16 @@
 
 
 
-<meta name="description" content="Ajax中经常用到get和post请求，那么什么时候用get请求，什么时候用post方式请求呢? 在回答前先要了解get和post的区别。
-
-一个在url中，一个在虚拟载体里get是把参数数据队列加到提交表单的ACTION属性所指的URL中，值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACT">
+<meta name="description" content="组件是可复用的，带有特定功能的视图。若项目中需反复用到一些内容，可以用组件来完成内容的封装和复用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ajax中的get和post两种请求方式的异同">
-<meta property="og:url" content="http://yoursite.com/2016/07/12/Ajax中的get和post两种请求方式的异同/index.html">
+<meta property="og:title" content="Vue2.0 组件">
+<meta property="og:url" content="http://yoursite.com/2017/01/05/Vue2.0 组件/index.html">
 <meta property="og:site_name" content="gaea2">
-<meta property="og:description" content="Ajax中经常用到get和post请求，那么什么时候用get请求，什么时候用post方式请求呢? 在回答前先要了解get和post的区别。
-
-一个在url中，一个在虚拟载体里get是把参数数据队列加到提交表单的ACTION属性所指的URL中，值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACT">
-<meta property="og:updated_time" content="2016-07-26T18:25:58.975Z">
+<meta property="og:description" content="组件是可复用的，带有特定功能的视图。若项目中需反复用到一些内容，可以用组件来完成内容的封装和复用。">
+<meta property="og:updated_time" content="2018-02-23T18:42:25.460Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ajax中的get和post两种请求方式的异同">
-<meta name="twitter:description" content="Ajax中经常用到get和post请求，那么什么时候用get请求，什么时候用post方式请求呢? 在回答前先要了解get和post的区别。
-
-一个在url中，一个在虚拟载体里get是把参数数据队列加到提交表单的ACTION属性所指的URL中，值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACT">
+<meta name="twitter:title" content="Vue2.0 组件">
+<meta name="twitter:description" content="组件是可复用的，带有特定功能的视图。若项目中需反复用到一些内容，可以用组件来完成内容的封装和复用。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -60,7 +54,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Ajax中的get和post两种请求方式的异同 | gaea2</title>
+<title>Vue2.0 组件 | gaea2</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -239,11 +233,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Ajax中的get和post两种请求方式的异同" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Vue2.0 组件" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/07/12/Ajax中的get和post两种请求方式的异同/" class="article-date">
-      <time datetime="2016-07-12T14:33:59.000Z" itemprop="datePublished">2016-07-12</time>
+      <a href="/2017/01/05/Vue2.0 组件/" class="article-date">
+      <time datetime="2017-01-05T11:19:59.000Z" itemprop="datePublished">2017-01-05</time>
 </a>
 
 
@@ -258,7 +252,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Ajax中的get和post两种请求方式的异同
+      Vue2.0 组件
     </h1>
   
 
@@ -269,7 +263,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/">ajax</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -280,45 +274,43 @@
       
           
         <blockquote>
-<p>Ajax中经常用到get和post请求，那么什么时候用get请求，什么时候用post方式请求呢? 在回答前先要了解get和post的区别。</p>
+<p>组件是可复用的，带有特定功能的视图。若项目中需反复用到一些内容，可以用组件来完成内容的封装和复用。</p>
 </blockquote>
-<h4 id="一个在url中，一个在虚拟载体里"><a href="#一个在url中，一个在虚拟载体里" class="headerlink" title="一个在url中，一个在虚拟载体里"></a>一个在url中，一个在虚拟载体里</h4><p>get是把参数数据队列加到提交表单的ACTION属性所指的URL中，值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。</p>
-<h4 id="获取参数"><a href="#获取参数" class="headerlink" title="获取参数"></a>获取参数</h4><p>对于get方式，服务器端用Request.QueryString获取变量的值，对于post方式，服务器端用Request.Form获取提交的数据。两种方式的参数都可以用Request来获得。</p>
 <a id="more"></a>
-<h4 id="传输数据大小"><a href="#传输数据大小" class="headerlink" title="传输数据大小"></a>传输数据大小</h4><p>get传送的数据量较小，不能大于2KB。post传送的数据量较大，一般被默认为不受限制。但理论上，因服务器的不同而异。</p>
-<h4 id="安全方面"><a href="#安全方面" class="headerlink" title="安全方面"></a>安全方面</h4><p>get安全性低，post安全性较高。</p>
-<h4 id="参数列表"><a href="#参数列表" class="headerlink" title="参数列表"></a>参数列表</h4><p><code>&lt;form method=&quot;get&quot; action=&quot;a.asp?b=b&quot;&gt;</code> 跟<code>&lt;form method=&quot;get&quot; action=&quot;a.asp&quot;&gt;</code> 是一样的，也就是说，method为get时action页面后边带的参数列表会被忽视；而<code>&lt;form method=&quot;post&quot; action=&quot;a.asp?b=b&quot;&gt;</code> 跟<code>&lt;form method=&quot;post&quot; action=&quot;a.asp&quot;&gt;</code> 是不一样的。</p>
-<p>另外，get请求有如下特性：它会将数据添加到URL中，通过这种方式传递到服务器，通常利用一个问号？代表URL地址的结尾与数据参数的开端，后面的参数每一个数据参数以“名称=值”的形式出现，参数与参数之间利用一个连接符&amp;来区分。post请求有如下特性：数据是放在HTTP主体中的，其组织方式不只一种，有&amp;连接方式，也有分割符方式，可隐藏参数，传递大批数据，比较方便。</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>当我们要传送一个较大的数据文件时,需要用post。当传递的值只需用参数方式(这个值&lt;=2KB)的时候，用get方式即可。举例说明：发送数据 username=张三</p>
-<p>GET 方式, 浏览器键入 <code>http://localhost?username=张三</code></p>
-<pre><code>GET /?username=%E5%BC%A0%E4%B8%89 HTTP/1.1
-Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, 
-application/vnd.ms-powerpoint, application/vnd.ms-excel, application/msword, */*
-Accept-Language: zh-cn
-Accept-Encoding: gzip, deflate
-User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0; .NET CLR 1.1.4322)
-Host: localhost
-Connection: Keep-Alive
-</code></pre><p>POST 方式:</p>
-<pre><code>POST / HTTP/1.1
-Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, 
-application/vnd.ms-powerpoint, application/vnd.ms-excel, application/msword, */*
-Accept-Language: zh-cn
-Content-Type: application/x-www-form-urlencoded
-Accept-Encoding: gzip, deflate
-User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0; .NET CLR 1.1.4322)
-Host: localhost
-Content-Length: 28
-Connection: Keep-Alive
-
-username=%E5%BC%A0%E4%B8%89
-</code></pre><p>比较以上，可以发现get方式把表单内容放在前面的请求头中，而post则把这些内容放在请求的主体中了, 同时post中把请求的 Content-Type 头设置为 application/x-www-form-urlencoded，而发送的正文都是一样的, 可以这样来构造一个表单提交正文:</p>
-<p><code>encodeURIComponent(arg1)=encodeURIComponent(value1)&amp;encodeURIComponent(arg2)=encodeURIComponent(value2)&amp;...</code></p>
-<p>GET 方式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postContent =<span class="string">"name="</span> + <span class="built_in">encodeURIComponent</span>(<span class="string">"xiaocheng"</span>) + </span><br><span class="line"><span class="string">"&amp;email="</span> + <span class="built_in">encodeURIComponent</span>(<span class="string">"xiaochengf_21@yahoo.com.cn"</span>);</span><br><span class="line">xmlhttp.open(<span class="string">"GET"</span>, <span class="string">"somepage"</span> + <span class="string">"?"</span> + postContent, <span class="literal">true</span>);</span><br><span class="line">xmlhttp.send(<span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
-<p>POST 方式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> postContent =<span class="string">"name="</span> + <span class="built_in">encodeURIComponent</span>(<span class="string">"xiaocheng"</span>) + </span><br><span class="line"><span class="string">"&amp;email="</span> + <span class="built_in">encodeURIComponent</span>(<span class="string">"xiaochengf_21@yahoo.com.cn"</span>);</span><br><span class="line">xmlhttp.open(<span class="string">"POST"</span>, <span class="string">"somepage"</span>, <span class="literal">true</span>);</span><br><span class="line">xmlhttp.setRequestHeader(<span class="string">"Content-Type"</span>, <span class="string">"application/x-www-form-urlencoded"</span>);</span><br><span class="line"><span class="comment">//xmlhttp.setRequestHeader("Content-Type", "text/xml"); //如果发送的是一个xml文件</span></span><br><span class="line">xmlhttp.send(postContent);</span><br></pre></td></tr></table></figure></p>
-<p>参考：<code>http://www.javaeye.com/topic/148033</code></p>
-
+<h5 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h5><p>全局组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-component'</span>,&#123;</span><br><span class="line">   template:<span class="string">'&lt;h1&gt;hello&lt;/h1&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>局部组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">   components:&#123;</span><br><span class="line">      <span class="string">'my-component'</span>:&#123;</span><br><span class="line">         template:<span class="string">'&lt;h1&gt;it is a header&lt;/h1&gt;'</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><p>将组件的名称作为普通的html 标签一样使用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">my-component</span>&gt;</span><span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><ul>
+<li>组件不能直接返回多个要渲染的元素，将要渲染的元素放在同一个容器中，如div</li>
+<li><p>允许组件嵌套</p>
+<ul>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-main'</span>,&#123;</span><br><span class="line">   template:<span class="string">`&lt;div&gt;</span><br><span class="line">   &lt;h1&gt;hey dude&lt;/h1&gt;</span><br><span class="line">   &lt;my-footer&gt;&lt;/my-footer&gt;</span><br><span class="line">   &lt;/div&gt;`</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>全局组件和局部组件的区别</p>
+<ul>
+<li>通过Vue.component 创建的组件是全局组件，它可以直接在任何一个组件或者模板内容中去使用</li>
+<li>通过new Vue({components:{}}) 创建组件的组件是局部组件，它只能直接用在父模板中</li>
+</ul>
+</li>
+<li>提到组件，想到封装和重用，其次想到组件树（帮助理清楚一个应用程序的组件的基本架构）</li>
+</ul>
+<h5 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h5><p>用创建全局组件的方式完成一个登录页面。</p>
+<p>html代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">my-login</span>&gt;</span><span class="tag">&lt;/<span class="name">my-login</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>js代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-login'</span>,&#123;</span><br><span class="line">  template:<span class="string">`</span><br><span class="line">  &lt;form&gt;</span><br><span class="line">    &lt;my-username-input&gt;&lt;/my-username-input&gt;</span><br><span class="line">    &lt;br/&gt;</span><br><span class="line">    &lt;my-userpwd-input&gt;&lt;/my-userpwd-input&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    &lt;my-login-button&gt;&lt;/my-login-button&gt;</span><br><span class="line">    &lt;my-register-button&gt;&lt;/my-register-button&gt;</span><br><span class="line">  &lt;/form&gt;</span><br><span class="line">  `</span></span><br><span class="line">&#125;)</span><br><span class="line">Vue.component(<span class="string">'my-login-button'</span>,&#123;</span><br><span class="line">  template:<span class="string">'&lt;button&gt;登录&lt;/button&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line">Vue.component(<span class="string">'my-register-button'</span>,&#123;</span><br><span class="line">  template:<span class="string">'&lt;button&gt;注册&lt;/button&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line">Vue.component(<span class="string">'my-username-input'</span>,&#123;</span><br><span class="line">  template:<span class="string">`</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;label&gt;用户名&lt;/label&gt;</span><br><span class="line">      &lt;input type="text"/&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  `</span></span><br><span class="line">&#125;)</span><br><span class="line">Vue.component(<span class="string">'my-userpwd-input'</span>,&#123;</span><br><span class="line">  template:<span class="string">`</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;label&gt;密码&lt;/label&gt;</span><br><span class="line">      &lt;input type="text"/&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  `</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    msg: <span class="string">'Hello VueJS'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h5 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h5><p>当模版内内容过多时：</p>
+<ol>
+<li>创建一个script 标签，并设置type=’text/x-template’，指定一个id=”myTemplate”</li>
+<li>在script标签中，指定模板内容</li>
+<li>在组件中指定模板内容，可以用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-component'</span>,&#123;</span><br><span class="line">  template:<span class="string">'#myTemplate'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>e.g.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">test-component</span>&gt;</span><span class="tag">&lt;/<span class="name">test-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/x-template"</span> <span class="attr">id</span>=<span class="string">"myTemplate"</span>&gt;</span><span class="xml"></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello Vue<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">Vue.component(<span class="string">'test-component'</span>,&#123;</span><br><span class="line">  template:<span class="string">'#myTemplate'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    msg: <span class="string">'Hello VueJS'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -329,16 +321,10 @@ username=%E5%BC%A0%E4%B8%89
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/07/25/DOCTYPE与浏览器模式浅析/">
-                    DOCTYPE与浏览器模式浅析
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/06/30/给github添加README/">
-                    给github添加README
+                <a href="/2017/01/04/当hexo d 部署出现各种问题时/">
+                    当hexo d 部署出现各种问题时
                 </a>
             </div>
         
@@ -350,7 +336,7 @@ username=%E5%BC%A0%E4%B8%89
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一个在url中，一个在虚拟载体里"><span class="toc-number">1.</span> <span class="toc-text">一个在url中，一个在虚拟载体里</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#获取参数"><span class="toc-number">2.</span> <span class="toc-text">获取参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#传输数据大小"><span class="toc-number">3.</span> <span class="toc-text">传输数据大小</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安全方面"><span class="toc-number">4.</span> <span class="toc-text">安全方面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参数列表"><span class="toc-number">5.</span> <span class="toc-text">参数列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#创建"><span class="toc-number">1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#注意"><span class="toc-number">3.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#练习"><span class="toc-number">4.</span> <span class="toc-text">练习</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#进阶"><span class="toc-number">5.</span> <span class="toc-text">进阶</span></a></li></ol>
         
     </div>
     <style>
@@ -377,7 +363,7 @@ username=%E5%BC%A0%E4%B8%89
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/07/12/Ajax中的get和post两种请求方式的异同/" data-title="Ajax中的get和post两种请求方式的异同" data-url="http://yoursite.com/2016/07/12/Ajax中的get和post两种请求方式的异同/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/05/Vue2.0 组件/" data-title="Vue2.0 组件" data-url="http://yoursite.com/2017/01/05/Vue2.0 组件/"></div>
     <script>
         var duoshuoQuery = {short_name:"mikotocloud"};
         var loadComment = function(){
@@ -400,15 +386,13 @@ username=%E5%BC%A0%E4%B8%89
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/07/25/DOCTYPE与浏览器模式浅析/" title="上一篇: DOCTYPE与浏览器模式浅析">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/06/30/给github添加README/" title="下一篇: 给github添加README">
+            <a href="/2017/01/04/当hexo d 部署出现各种问题时/" title="下一篇: 当hexo d 部署出现各种问题时">
                 <i class="fa fa-angle-right"></i>
             </a>
         
