@@ -15,27 +15,16 @@
 
 
 
-<meta name="description" content="《九九八十一》是以西游记原著为题材的中文歌曲，由虚拟歌手 乐正绫 （和声 洛天依）演唱，视频中所有角色都由不同的V家的虚拟歌手和歌曲创作staff扮演。
-
-b站拜年祭我没看，偶然听到这首歌，只感觉歌词很美。然后看乐正绫的视频，最喜欢百目怪了嘤。念白版也很好听《九九八十一念白版》
-混沌未分天地乱，茫渺世间无人见自迄盘古破鸿蒙，开辟从兹清浊辨">
+<meta name="description" content="在Vue 中，父子组件的关系可以总结为props down 向下传递，events up向上传递。父组件通过prop 给子组件下发数据，子组件通过事件给父组件发送消息。本文介绍props down 通过属性传值。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="九九八十一">
-<meta property="og:url" content="http://yoursite.com/2016/04/22/九九八十一/index.html">
+<meta property="og:title" content="Vue2.0 父子组件间通信（一）">
+<meta property="og:url" content="http://yoursite.com/2017/01/09/Vue2.0 父子组件间通信（一）/index.html">
 <meta property="og:site_name" content="gaea2">
-<meta property="og:description" content="《九九八十一》是以西游记原著为题材的中文歌曲，由虚拟歌手 乐正绫 （和声 洛天依）演唱，视频中所有角色都由不同的V家的虚拟歌手和歌曲创作staff扮演。
-
-b站拜年祭我没看，偶然听到这首歌，只感觉歌词很美。然后看乐正绫的视频，最喜欢百目怪了嘤。念白版也很好听《九九八十一念白版》
-混沌未分天地乱，茫渺世间无人见自迄盘古破鸿蒙，开辟从兹清浊辨">
-<meta property="og:image" content="http://yoursite.com/images/hello.jpg">
-<meta property="og:updated_time" content="2016-07-26T19:44:18.437Z">
+<meta property="og:description" content="在Vue 中，父子组件的关系可以总结为props down 向下传递，events up向上传递。父组件通过prop 给子组件下发数据，子组件通过事件给父组件发送消息。本文介绍props down 通过属性传值。">
+<meta property="og:updated_time" content="2018-02-23T23:50:39.474Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="九九八十一">
-<meta name="twitter:description" content="《九九八十一》是以西游记原著为题材的中文歌曲，由虚拟歌手 乐正绫 （和声 洛天依）演唱，视频中所有角色都由不同的V家的虚拟歌手和歌曲创作staff扮演。
-
-b站拜年祭我没看，偶然听到这首歌，只感觉歌词很美。然后看乐正绫的视频，最喜欢百目怪了嘤。念白版也很好听《九九八十一念白版》
-混沌未分天地乱，茫渺世间无人见自迄盘古破鸿蒙，开辟从兹清浊辨">
-<meta name="twitter:image" content="http://yoursite.com/images/hello.jpg">
+<meta name="twitter:title" content="Vue2.0 父子组件间通信（一）">
+<meta name="twitter:description" content="在Vue 中，父子组件的关系可以总结为props down 向下传递，events up向上传递。父组件通过prop 给子组件下发数据，子组件通过事件给父组件发送消息。本文介绍props down 通过属性传值。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -65,7 +54,7 @@ b站拜年祭我没看，偶然听到这首歌，只感觉歌词很美。然后�
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>九九八十一 | gaea2</title>
+<title>Vue2.0 父子组件间通信（一） | gaea2</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -244,11 +233,11 @@ b站拜年祭我没看，偶然听到这首歌，只感觉歌词很美。然后�
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-九九八十一" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Vue2.0 父子组件间通信（一）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/04/22/九九八十一/" class="article-date">
-      <time datetime="2016-04-22T11:19:59.000Z" itemprop="datePublished">2016-04-22</time>
+      <a href="/2017/01/09/Vue2.0 父子组件间通信（一）/" class="article-date">
+      <time datetime="2017-01-09T11:19:59.000Z" itemprop="datePublished">2017-01-09</time>
 </a>
 
 
@@ -263,7 +252,7 @@ b站拜年祭我没看，偶然听到这首歌，只感觉歌词很美。然后�
         
   
     <h1 class="article-title" itemprop="name">
-      九九八十一
+      Vue2.0 父子组件间通信（一）
     </h1>
   
 
@@ -274,7 +263,7 @@ b站拜年祭我没看，偶然听到这首歌，只感觉歌词很美。然后�
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ACG/">ACG</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -285,30 +274,22 @@ b站拜年祭我没看，偶然听到这首歌，只感觉歌词很美。然后�
       
           
         <blockquote>
-<p>《九九八十一》是以西游记原著为题材的中文歌曲，由虚拟歌手 乐正绫 （和声 洛天依）演唱，视频中所有角色都由不同的V家的虚拟歌手和歌曲创作staff扮演。</p>
+<p>在Vue 中，父子组件的关系可以总结为props down 向下传递，events up向上传递。父组件通过prop 给子组件下发数据，子组件通过事件给父组件发送消息。本文介绍props down 通过属性传值。</p>
 </blockquote>
-<p>b站拜年祭我没看，偶然听到这首歌，只感觉歌词很美。然后看乐正绫的视频，最喜欢百目怪了嘤。<br>念白版也很好听<a href="http://music.163.com/#/song?id=404459904" target="_blank" rel="external">《九九八十一念白版》</a></p>
-<p>混沌未分天地乱，茫渺世间无人见<br>自迄盘古破鸿蒙，开辟从兹清浊辨</p>
 <a id="more"></a>
-<p>覆载群生仰至仁，发明万物皆成善<br>欲知造化会元功，须看西游释厄传</p>
-<p>上路 巩州遇虎熊 （熊山君，寅将军）<br>五百年前一场疯 腾宵又是孙悟空 （孙悟空）<br>失马 鹰愁涧飞白龙 （白龙马）<br>沙河阻断路难通 福陵山中收天蓬 （沙和尚，猪八戒）<br>岭上 前行逆黄风 （黄风怪）<br>七星不照波月洞 千年白骨化阴风 （奎木狼，白骨精）<br>鱼篮 网通天一尾红 （灵感大王）<br>紫金葫芦二道童 九尾老狐敢压龙 （金、银角大王，压龙大仙）</p>
-<p>白虹坠 雪浪击石碎<br>思归 难归 堕回 轮回<br>月满一江水 前世莫追 （花果山水帘洞&amp;金蝉子月满抛江）</p>
-<p>福泽聚宝象 春风度不让洛阳 （宝象国）<br>玉面狐折兰香 七绝崖上暗伏赤色大蟒 （玉面狐狸，蟒蛇精）<br>过西梁 女儿国鸳鸯罗帐 （西梁女国）<br>与三道斗法相 火云扬 明枪易挡暗箭难防（车迟国，红孩儿）</p>
-<p>十方魔 渴饮着我的脆弱<br>凭你计法相迫 逐个击破要你识我本色 （唐僧）<br>万里恶 摧垮了我的沉默<br>一肩担路坎坷 我不说 又何须旁人来嚼口舌 （沙和尚）</p>
-<p>借扇 翠云访罗刹 （罗刹女【铁扇公主】）<br>碧波潭内结亲宴 招来九头的驸马 （九头虫）<br>雾隐 金斑豹伸利爪 （豹子精）<br>城北黄狮盗钉耙 白毛小鼠偷烛花 （黄狮精，白鼠精）<br>思乡 未敢听琵琶<br>摄魂曲后三股叉 一朝命断美人画 （蝎子精）<br>六耳 幻形难辨真假 （六耳猕猴）<br>太岁摇铃唤风沙 玉兔抛绣高台搭 （赛太岁，玉兔精）</p>
-<p>红霓垂 九重紫云飞<br>久归 未归 欲回 恨回<br>凡胎恰登对 天命难违 （天庭贬天蓬、卷帘二将）</p>
-<p>比丘走白鹿 十三娘情丝缠缚 （白鹿精，春十三娘【蜘蛛精】）<br>乌袍君生百目 庙前拦路自称黄眉老祖 （蜈蚣精【百目怪】，黄眉老祖）<br>将云拂 孤直公对谈诗赋 （拂云叟，孤直公）<br>还未能抵天竺 金平府 钺斩红尘斧辟寒暑（辟寒大仙，辟暑大仙，辟尘大仙）</p>
-<p>众笔者 嘲笑着我的贪得<br>藏美酒有甚者 谁却敢说自己放肆醉过<br>休怪我 这半生痴情煞多<br>活一遭风流客 慕娇娥 但愿抱拥世间真绝色 （猪八戒）</p>
-<p>山河星罗，坎坷雾列<br>伐木丁丁，观棋烂柯，寒暑几经，一觉天明<br>九幽十类，四海千山，群作并起，紫雾红霓</p>
-<blockquote>
-<p><span style="color:green">当时凌太虚</span></p>
-</blockquote>
-<p>木母逢凶，神猿惑心，因缘早定</p>
-<p>浮世千寻沫 冲荡了我的轮廓<br>纵身入尘埃里 雷雨大作我也放声而歌<br>方寸中 方寸却不能定夺<br>七十二般胆魄 这次我决意不闪躲</p>
-<p>世尊如来佛 诘问着我的执着<br>当年我瑶池刻 闹得痛快并未想过太多<br>状罪责 拿捏了我的业果<br>可顽心不服错 不思过 齐天大圣地上行者 （孙悟空）</p>
-<p>那传说 忘却了我的寂寞<br>英雄名不堪得 何必较我混沌徒费口沫<br>这人间 毕竟我真正走过<br>一途平九百波 九千错 凌云渡成正果但我<br>有九九八十一种不舍</p>
-<p><img src="/images/hello.jpg" alt="hello"></p>
-
+<ol>
+<li><p>配置子组件的props</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'son'</span>,&#123;</span><br><span class="line">   props:[<span class="string">'userName'</span>]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>父组件模板中调用子组件时，通过属性把值传递过去</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'father'</span>,&#123;</span><br><span class="line">   data:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">         uName:<span class="string">'zhangsan'</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   template:<span class="string">'&lt;son :userName='</span>uName<span class="string">'&gt;&lt;/son&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>e.g.</p>
+<p>html代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">nibaba</span>&gt;</span><span class="tag">&lt;/<span class="name">nibaba</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>js代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'nibaba'</span>,&#123;</span><br><span class="line">  data:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      uName:<span class="string">'速水'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  template:<span class="string">`</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;这是父组件&lt;/h1&gt;</span><br><span class="line">      &lt;hr/&gt;</span><br><span class="line">      &lt;sweetie :sonName=uName&gt;&lt;/sweetie&gt;</span><br><span class="line">      &lt;sweetie sonName="大可爱"&gt;&lt;/sweetie&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  `</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// uName 和"大可爱" 都是父组件发给子组件的值</span></span><br><span class="line"></span><br><span class="line">Vue.component(<span class="string">'sweetie'</span>,&#123;</span><br><span class="line">  props:[<span class="string">'sonName'</span>],</span><br><span class="line">  template:<span class="string">`</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h2&gt;这是子组件&lt;/h2&gt;</span><br><span class="line">      &lt;p&gt;&#123;&#123;this.sonName&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  `</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    msg: <span class="string">'Hello VueJS'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -319,16 +300,10 @@ b站拜年祭我没看，偶然听到这首歌，只感觉歌词很美。然后�
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/05/18/ps切图/">
-                    ps切图篇
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/04/09/css center/">
-                    css居中各种实现
+                <a href="/2017/01/07/Vue2.0 中的计算属性和侦听器/">
+                    Vue2.0 中的计算属性和侦听器
                 </a>
             </div>
         
@@ -367,7 +342,7 @@ b站拜年祭我没看，偶然听到这首歌，只感觉歌词很美。然后�
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/04/22/九九八十一/" data-title="九九八十一" data-url="http://yoursite.com/2016/04/22/九九八十一/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/09/Vue2.0 父子组件间通信（一）/" data-title="Vue2.0 父子组件间通信（一）" data-url="http://yoursite.com/2017/01/09/Vue2.0 父子组件间通信（一）/"></div>
     <script>
         var duoshuoQuery = {short_name:"mikotocloud"};
         var loadComment = function(){
@@ -390,15 +365,13 @@ b站拜年祭我没看，偶然听到这首歌，只感觉歌词很美。然后�
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/05/18/ps切图/" title="上一篇: ps切图篇">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/04/09/css center/" title="下一篇: css居中各种实现">
+            <a href="/2017/01/07/Vue2.0 中的计算属性和侦听器/" title="下一篇: Vue2.0 中的计算属性和侦听器">
                 <i class="fa fa-angle-right"></i>
             </a>
         
