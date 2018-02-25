@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="组件是可复用的，带有特定功能的视图。若项目中需反复用到一些内容，可以用组件来完成内容的封装和复用。">
+<meta name="description" content="父组件使用prop 传递数据给子组件。但子组件怎么跟父组件通信呢？这个时候Vue 的自定义事件系统就派得上用场了。本文介绍events up 通过自定义事件传值。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue2.0 组件">
-<meta property="og:url" content="http://yoursite.com/2017/01/05/Vue2.0 组件/index.html">
+<meta property="og:title" content="Vue2.0 父子组件间通信（二）">
+<meta property="og:url" content="http://yoursite.com/2017/01/09/Vue2.0 父子组件间通信（二）/index.html">
 <meta property="og:site_name" content="gaea2">
-<meta property="og:description" content="组件是可复用的，带有特定功能的视图。若项目中需反复用到一些内容，可以用组件来完成内容的封装和复用。">
-<meta property="og:updated_time" content="2018-02-23T23:32:00.657Z">
+<meta property="og:description" content="父组件使用prop 传递数据给子组件。但子组件怎么跟父组件通信呢？这个时候Vue 的自定义事件系统就派得上用场了。本文介绍events up 通过自定义事件传值。">
+<meta property="og:updated_time" content="2018-02-25T20:56:10.177Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue2.0 组件">
-<meta name="twitter:description" content="组件是可复用的，带有特定功能的视图。若项目中需反复用到一些内容，可以用组件来完成内容的封装和复用。">
+<meta name="twitter:title" content="Vue2.0 父子组件间通信（二）">
+<meta name="twitter:description" content="父组件使用prop 传递数据给子组件。但子组件怎么跟父组件通信呢？这个时候Vue 的自定义事件系统就派得上用场了。本文介绍events up 通过自定义事件传值。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -54,7 +54,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Vue2.0 组件 | gaea2</title>
+<title>Vue2.0 父子组件间通信（二） | gaea2</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -233,11 +233,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Vue2.0 组件" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Vue2.0 父子组件间通信（二）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/01/05/Vue2.0 组件/" class="article-date">
-      <time datetime="2017-01-05T11:19:59.000Z" itemprop="datePublished">2017-01-05</time>
+      <a href="/2017/01/09/Vue2.0 父子组件间通信（二）/" class="article-date">
+      <time datetime="2017-01-09T12:19:59.000Z" itemprop="datePublished">2017-01-09</time>
 </a>
 
 
@@ -252,7 +252,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Vue2.0 组件
+      Vue2.0 父子组件间通信（二）
     </h1>
   
 
@@ -274,43 +274,23 @@
       
           
         <blockquote>
-<p>组件是可复用的，带有特定功能的视图。若项目中需反复用到一些内容，可以用组件来完成内容的封装和复用。</p>
+<p>父组件使用prop 传递数据给子组件。但子组件怎么跟父组件通信呢？这个时候Vue 的自定义事件系统就派得上用场了。本文介绍events up 通过自定义事件传值。</p>
 </blockquote>
 <a id="more"></a>
-<h5 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h5><p>全局注册</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-component'</span>,&#123;</span><br><span class="line">   template:<span class="string">'&lt;h1&gt;hello&lt;/h1&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>局部注册</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">   components:&#123;</span><br><span class="line">      <span class="string">'my-component'</span>:&#123;</span><br><span class="line">         template:<span class="string">'&lt;h1&gt;it is a header&lt;/h1&gt;'</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><p>将组件的名称作为普通的html 标签一样使用</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">my-component</span>&gt;</span><span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><ul>
-<li>组件不能直接返回多个要渲染的元素，将要渲染的元素放在同一个容器中，如div</li>
-<li><p>允许组件嵌套</p>
-<ul>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-main'</span>,&#123;</span><br><span class="line">   template:<span class="string">`&lt;div&gt;</span><br><span class="line">   &lt;h1&gt;hey dude&lt;/h1&gt;</span><br><span class="line">   &lt;my-footer&gt;&lt;/my-footer&gt;</span><br><span class="line">   &lt;/div&gt;`</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>全局组件和局部组件的区别</p>
-<ul>
-<li>通过Vue.component 创建的组件是全局组件，它可以直接在任何一个组件或者模板内容中去使用</li>
-<li>通过new Vue({components:{}}) 创建组件的组件是局部组件，它只能直接用在父模板中</li>
-</ul>
-</li>
-<li>提到组件，想到封装和重用，其次想到组件树（帮助理清楚一个应用程序的组件的基本架构）</li>
-</ul>
-<h5 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h5><p>用创建全局组件的方式完成一个登录页面。</p>
-<p>html代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">my-login</span>&gt;</span><span class="tag">&lt;/<span class="name">my-login</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>js代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-login'</span>,&#123;</span><br><span class="line">  template:<span class="string">`</span><br><span class="line">  &lt;form&gt;</span><br><span class="line">    &lt;my-username-input&gt;&lt;/my-username-input&gt;</span><br><span class="line">    &lt;br/&gt;</span><br><span class="line">    &lt;my-userpwd-input&gt;&lt;/my-userpwd-input&gt;</span><br><span class="line">    &lt;br&gt;</span><br><span class="line">    &lt;my-login-button&gt;&lt;/my-login-button&gt;</span><br><span class="line">    &lt;my-register-button&gt;&lt;/my-register-button&gt;</span><br><span class="line">  &lt;/form&gt;</span><br><span class="line">  `</span></span><br><span class="line">&#125;)</span><br><span class="line">Vue.component(<span class="string">'my-login-button'</span>,&#123;</span><br><span class="line">  template:<span class="string">'&lt;button&gt;登录&lt;/button&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line">Vue.component(<span class="string">'my-register-button'</span>,&#123;</span><br><span class="line">  template:<span class="string">'&lt;button&gt;注册&lt;/button&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line">Vue.component(<span class="string">'my-username-input'</span>,&#123;</span><br><span class="line">  template:<span class="string">`</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;label&gt;用户名&lt;/label&gt;</span><br><span class="line">      &lt;input type="text"/&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  `</span></span><br><span class="line">&#125;)</span><br><span class="line">Vue.component(<span class="string">'my-userpwd-input'</span>,&#123;</span><br><span class="line">  template:<span class="string">`</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;label&gt;密码&lt;/label&gt;</span><br><span class="line">      &lt;input type="text"/&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  `</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    msg: <span class="string">'Hello VueJS'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<h5 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h5><p>当模版内内容过多时：</p>
 <ol>
-<li>创建一个script 标签，并设置type=’text/x-template’，指定一个id=”myTemplate”</li>
-<li>在script标签中，指定模板内容</li>
-<li>在组件中指定模板内容，可以用<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-component'</span>,&#123;</span><br><span class="line">  template:<span class="string">'#myTemplate'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<li><p>在子组件中，触发自定义事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'son'</span>,&#123;</span><br><span class="line">   <span class="comment">//触发事件</span></span><br><span class="line">   <span class="keyword">this</span>.$emit(<span class="string">'customEvent'</span>,<span class="string">'发送的数据'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在父组件模板中，调用子组件时，用v-on 绑定一个触发上述自定义事件时要调用的方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'father'</span>,&#123;</span><br><span class="line">   methods:&#123;</span><br><span class="line">      getMsg:<span class="function"><span class="keyword">function</span>(<span class="params">msg</span>)</span>&#123;</span><br><span class="line">         <span class="comment">//msg 即接收到的数据</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;，</span><br><span class="line">   template:<span class="string">'&lt;son @customEvent=getMsg&gt;&lt;/son&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>e.g.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">test-component</span>&gt;</span><span class="tag">&lt;/<span class="name">test-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/x-template"</span> <span class="attr">id</span>=<span class="string">"myTemplate"</span>&gt;</span><span class="xml"></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello Vue<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">Vue.component(<span class="string">'test-component'</span>,&#123;</span><br><span class="line">  template:<span class="string">'#myTemplate'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    msg: <span class="string">'Hello VueJS'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>html代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">nibaba</span>&gt;</span><span class="tag">&lt;/<span class="name">nibaba</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>js代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'nibaba'</span>,&#123;</span><br><span class="line">  methods:&#123;</span><br><span class="line">    getMsg:<span class="function"><span class="keyword">function</span> (<span class="params">msg</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'接收到数据了：'</span>+msg);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  template:<span class="string">`</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;这是父组件&lt;/h1&gt;</span><br><span class="line">      &lt;hr/&gt;</span><br><span class="line">      &lt;sweetie @sendToFather=getMsg&gt;&lt;/sweetie&gt;</span><br><span class="line">      &lt;!--@ 即v-on，sendToFather 为自定义事件--&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  `</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Vue.component(<span class="string">'sweetie'</span>,&#123;</span><br><span class="line">  data:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;num:<span class="string">'hey dude'</span>&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  template:<span class="string">`</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h2&gt;这是子组件&lt;/h2&gt;</span><br><span class="line">      &lt;button @click=handleClick&gt;</span><br><span class="line">        发数据给父组件</span><br><span class="line">      &lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  `</span>,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    handleClick:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.$emit(<span class="string">'sendToFather'</span>,<span class="keyword">this</span>.num);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    msg: <span class="string">'Hello VueJS'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -321,16 +301,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/01/06/Vue2.0 组件的生命周期/">
-                    Vue2.0 组件的生命周期
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/01/04/当hexo d 部署出现各种问题时/">
-                    当hexo d 部署出现各种问题时
+                <a href="/2017/01/09/Vue2.0 父子组件间通信（一）/">
+                    Vue2.0 父子组件间通信（一）
                 </a>
             </div>
         
@@ -342,7 +316,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#创建"><span class="toc-number">1.</span> <span class="toc-text">创建</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#注意"><span class="toc-number">3.</span> <span class="toc-text">注意</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#练习"><span class="toc-number">4.</span> <span class="toc-text">练习</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#进阶"><span class="toc-number">5.</span> <span class="toc-text">进阶</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -369,7 +343,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/05/Vue2.0 组件/" data-title="Vue2.0 组件" data-url="http://yoursite.com/2017/01/05/Vue2.0 组件/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/09/Vue2.0 父子组件间通信（二）/" data-title="Vue2.0 父子组件间通信（二）" data-url="http://yoursite.com/2017/01/09/Vue2.0 父子组件间通信（二）/"></div>
     <script>
         var duoshuoQuery = {short_name:"mikotocloud"};
         var loadComment = function(){
@@ -392,15 +366,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/01/06/Vue2.0 组件的生命周期/" title="上一篇: Vue2.0 组件的生命周期">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/01/04/当hexo d 部署出现各种问题时/" title="下一篇: 当hexo d 部署出现各种问题时">
+            <a href="/2017/01/09/Vue2.0 父子组件间通信（一）/" title="下一篇: Vue2.0 父子组件间通信（一）">
                 <i class="fa fa-angle-right"></i>
             </a>
         
