@@ -15,36 +15,16 @@
 
 
 
-<meta name="description" content="今天才发现自己github.io那个项目没有README.md，我记得之前添加过了啊。。
-好吧，应该是本地执行hexo clean 时清掉了。
-看了网上的一些解决方法。
-
-将README.MD的后缀去掉，改为README
-
-这种方法简单粗暴，缺点是github只支持部分解析，样式上就不要期待太多了(。・ω・)">
+<meta name="description" content="尽管有prop 和事件，有时仍需在JavaScript 中直接访问子组件。为此可以使用ref 为子组件指定一个引用名称。同样可以直接在子组件中，通过this.$parent 得到父组件的实例对象，从而进行具体的操作。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="给github添加README">
-<meta property="og:url" content="http://yoursite.com/2016/06/30/给github添加README/index.html">
+<meta property="og:title" content="Vue2.0 父子组件间通信（三）">
+<meta property="og:url" content="http://yoursite.com/2017/01/11/Vue2.0 父子组件间通信（三）/index.html">
 <meta property="og:site_name" content="gaea2">
-<meta property="og:description" content="今天才发现自己github.io那个项目没有README.md，我记得之前添加过了啊。。
-好吧，应该是本地执行hexo clean 时清掉了。
-看了网上的一些解决方法。
-
-将README.MD的后缀去掉，改为README
-
-这种方法简单粗暴，缺点是github只支持部分解析，样式上就不要期待太多了(。・ω・)">
-<meta property="og:image" content="http://yoursite.com/images/readme.png">
-<meta property="og:updated_time" content="2016-07-24T20:07:06.718Z">
+<meta property="og:description" content="尽管有prop 和事件，有时仍需在JavaScript 中直接访问子组件。为此可以使用ref 为子组件指定一个引用名称。同样可以直接在子组件中，通过this.$parent 得到父组件的实例对象，从而进行具体的操作。">
+<meta property="og:updated_time" content="2018-02-26T00:53:58.125Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="给github添加README">
-<meta name="twitter:description" content="今天才发现自己github.io那个项目没有README.md，我记得之前添加过了啊。。
-好吧，应该是本地执行hexo clean 时清掉了。
-看了网上的一些解决方法。
-
-将README.MD的后缀去掉，改为README
-
-这种方法简单粗暴，缺点是github只支持部分解析，样式上就不要期待太多了(。・ω・)">
-<meta name="twitter:image" content="http://yoursite.com/images/readme.png">
+<meta name="twitter:title" content="Vue2.0 父子组件间通信（三）">
+<meta name="twitter:description" content="尽管有prop 和事件，有时仍需在JavaScript 中直接访问子组件。为此可以使用ref 为子组件指定一个引用名称。同样可以直接在子组件中，通过this.$parent 得到父组件的实例对象，从而进行具体的操作。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -74,7 +54,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>给github添加README | gaea2</title>
+<title>Vue2.0 父子组件间通信（三） | gaea2</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -253,11 +233,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-给github添加README" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Vue2.0 父子组件间通信（三）" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/30/给github添加README/" class="article-date">
-      <time datetime="2016-06-30T11:19:59.000Z" itemprop="datePublished">2016-06-30</time>
+      <a href="/2017/01/11/Vue2.0 父子组件间通信（三）/" class="article-date">
+      <time datetime="2017-01-11T11:19:59.000Z" itemprop="datePublished">2017-01-11</time>
 </a>
 
 
@@ -272,7 +252,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      给github添加README
+      Vue2.0 父子组件间通信（三）
     </h1>
   
 
@@ -283,7 +263,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -293,24 +273,27 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>今天才发现自己github.io那个项目没有README.md，我记得之前添加过了啊。。</p>
-<p>好吧，应该是本地执行<code>hexo clean</code> 时清掉了。</p>
-<p>看了网上的一些解决方法。</p>
-<blockquote>
-<p>将README.MD的后缀去掉，改为README</p>
+        <blockquote>
+<p>尽管有prop 和事件，有时仍需在JavaScript 中直接访问子组件。为此可以使用ref 为子组件指定一个引用名称。同样可以直接在子组件中，通过this.$parent 得到父组件的实例对象，从而进行具体的操作。</p>
 </blockquote>
-<p>这种方法简单粗暴，缺点是github只支持部分解析，样式上就不要期待太多了(。・ω・) </p>
 <a id="more"></a>
-<blockquote>
-<p>将README.MD文件放到source文件夹或theme对应的source文件夹下，再加上layout:false</p>
-</blockquote>
-<p>然而这么做hexo还是会把md文件解析成html，so sad。</p>
-<p>也有一劳永逸的办法。</p>
-<blockquote>
-<p>将<em>README.MD</em>文件的后缀名改成”MDOWN”，然后放到本地的blog/source文件夹下即可</p>
-</blockquote>
-<p>成果如图，即使执行<code>hexo clean</code> 也会保留github上的README了。</p>
-<p><img src="/images/readme.png" alt="README"></p>
+<h5 id="父-gt-子"><a href="#父-gt-子" class="headerlink" title="父 -&gt; 子"></a>父 -&gt; 子</h5><p>e.g.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'nibaba'</span>,&#123;</span><br><span class="line">  data:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      id:<span class="string">'速水'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  template: <span class="string">'&lt;sweetie&gt;&lt;/sweetie&gt;'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Vue.component(<span class="string">'sweetie'</span>,&#123;</span><br><span class="line">  mounted:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//组件挂载完毕后，读取父组件中的值</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$parent.id);</span><br><span class="line">  &#125;,</span><br><span class="line">  template: <span class="string">'&lt;h1&gt;这是子组件&lt;/h1&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="子-gt-父"><a href="#子-gt-父" class="headerlink" title="子 -&gt; 父"></a>子 -&gt; 父</h5><p>ref(reference) 可以给一个组件指定一个引用的名称，父组件可以根据该引用的名称得到它的实例对象，从而进行操作。</p>
+<ol>
+<li><p>在父组件中调用子组件时，指定ref属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'father'</span>,&#123;</span><br><span class="line">  template: <span class="string">'&lt;son ref="myRef"&gt;&lt;/son&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据引用的名称得到子组件的实例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$refs.myRef.属性/方法</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>e.g.</p>
+<p>html代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">nibaba</span>&gt;</span><span class="tag">&lt;/<span class="name">nibaba</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>js代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'nibaba'</span>,&#123;</span><br><span class="line">  methods:&#123;</span><br><span class="line">    sonQA:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">//读取子组件中的数据或者方法</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.$refs.myson.nowBusy);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  template:<span class="string">`</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button @click=sonQA&gt;</span><br><span class="line">        大可爱，在干嘛？</span><br><span class="line">      &lt;/button&gt;</span><br><span class="line">      &lt;hr/&gt;</span><br><span class="line">      &lt;!--myson 即为自定义的引用名称--&gt;</span><br><span class="line">      &lt;sweetie ref=myson&gt;&lt;/sweetie&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  `</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Vue.component(<span class="string">'sweetie'</span>,&#123;</span><br><span class="line">  data:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      nowBusy:<span class="string">'玩游戏...'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  template: <span class="string">'&lt;h1&gt;这是子组件&lt;/h1&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>$refs 和$parent 可以直接在父子组件间通信，但是提高了耦合度（你怎么知道父组件有什么数据），不利于组件本身的封装。建议使用props down，events up。</p>
 
       
     </div>
@@ -323,15 +306,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/07/12/Ajax中的get和post两种请求方式的异同/">
-                    Ajax中的get和post两种请求方式的异同
+                <a href="/2017/01/12/Vue2.0 兄弟组件间通信/">
+                    Vue2.0 兄弟组件间通信
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/06/28/hexo搭建过程/">
-                    win下Hexo博客的搭建过程
+                <a href="/2017/01/10/浅析Vue2.0 v-model 的实现原理/">
+                    浅析Vue2.0 v-model 的实现原理
                 </a>
             </div>
         
@@ -343,7 +326,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#父-gt-子"><span class="toc-number">1.</span> <span class="toc-text">父 -> 子</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#子-gt-父"><span class="toc-number">2.</span> <span class="toc-text">子 -> 父</span></a></li></ol>
         
     </div>
     <style>
@@ -370,7 +353,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/06/30/给github添加README/" data-title="给github添加README" data-url="http://yoursite.com/2016/06/30/给github添加README/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/11/Vue2.0 父子组件间通信（三）/" data-title="Vue2.0 父子组件间通信（三）" data-url="http://yoursite.com/2017/01/11/Vue2.0 父子组件间通信（三）/"></div>
     <script>
         var duoshuoQuery = {short_name:"mikotocloud"};
         var loadComment = function(){
@@ -393,7 +376,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/07/12/Ajax中的get和post两种请求方式的异同/" title="上一篇: Ajax中的get和post两种请求方式的异同">
+            <a href="/2017/01/12/Vue2.0 兄弟组件间通信/" title="上一篇: Vue2.0 兄弟组件间通信">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -401,7 +384,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/06/28/hexo搭建过程/" title="下一篇: win下Hexo博客的搭建过程">
+            <a href="/2017/01/10/浅析Vue2.0 v-model 的实现原理/" title="下一篇: 浅析Vue2.0 v-model 的实现原理">
                 <i class="fa fa-angle-right"></i>
             </a>
         
