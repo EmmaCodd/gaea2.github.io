@@ -15,18 +15,16 @@
 
 
 
-<meta name="description" content="常出现在页面底部">
+<meta name="description" content="这里用jsonplaceholder 的json 数据模拟。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue2.0 页码练习">
-<meta property="og:url" content="http://yoursite.com/2016/12/28/Vue2.0 页码练习/index.html">
+<meta property="og:title" content="Vue2.0 与远程服务端通信">
+<meta property="og:url" content="http://yoursite.com/2017/01/17/Vue2.0 与远程服务端通信/index.html">
 <meta property="og:site_name" content="gaea2">
-<meta property="og:description" content="常出现在页面底部">
-<meta property="og:image" content="http://yoursite.com/images/pages.png">
-<meta property="og:updated_time" content="2018-02-22T16:33:10.262Z">
+<meta property="og:description" content="这里用jsonplaceholder 的json 数据模拟。">
+<meta property="og:updated_time" content="2018-02-27T17:00:50.688Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue2.0 页码练习">
-<meta name="twitter:description" content="常出现在页面底部">
-<meta name="twitter:image" content="http://yoursite.com/images/pages.png">
+<meta name="twitter:title" content="Vue2.0 与远程服务端通信">
+<meta name="twitter:description" content="这里用jsonplaceholder 的json 数据模拟。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +54,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Vue2.0 页码练习 | gaea2</title>
+<title>Vue2.0 与远程服务端通信 | gaea2</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -235,11 +233,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Vue2.0 页码练习" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Vue2.0 与远程服务端通信" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/28/Vue2.0 页码练习/" class="article-date">
-      <time datetime="2016-12-28T11:19:59.000Z" itemprop="datePublished">2016-12-28</time>
+      <a href="/2017/01/17/Vue2.0 与远程服务端通信/" class="article-date">
+      <time datetime="2017-01-17T11:19:59.000Z" itemprop="datePublished">2017-01-17</time>
 </a>
 
 
@@ -254,7 +252,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Vue2.0 页码练习
+      Vue2.0 与远程服务端通信
     </h1>
   
 
@@ -276,16 +274,22 @@
       
           
         <blockquote>
-<p>常出现在页面底部</p>
+<p>这里用jsonplaceholder 的json 数据模拟。</p>
 </blockquote>
 <a id="more"></a>
-<h5 id="实现效果如图"><a href="#实现效果如图" class="headerlink" title="实现效果如图"></a>实现效果如图</h5><p><img src="/images/pages.png" alt="pages"></p>
-<h5 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.myHighlight</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="html代码"><a href="#html代码" class="headerlink" title="html代码"></a>html代码</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>上一页<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span></span><br><span class="line">   <span class="attr">v-on:click</span>=<span class="string">"choosePage(index)"</span></span><br><span class="line">   <span class="attr">v-bind:class</span>=<span class="string">"&#123;myHighlight:nowPage == (index+1)&#125;"</span></span><br><span class="line">   <span class="attr">v-for</span>=<span class="string">"(tmp,index) in pageList"</span>&gt;</span></span><br><span class="line">   &#123;&#123;tmp&#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span></span><br><span class="line">   <span class="attr">:disabled</span>=<span class="string">"nowPage&gt;=5"</span></span><br><span class="line">   @<span class="attr">click</span>=<span class="string">"nextPage"</span>&gt;</span></span><br><span class="line">   下一页</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这里只实现了下一页功能，上一页同理。超出第五页时可绑定属性disabled 也可在nextPage 方法中作个判断。</p>
-<h5 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    pageList:[<span class="string">'Ⅰ'</span>,<span class="string">'Ⅱ'</span>,<span class="string">'Ⅲ'</span>,<span class="string">'Ⅳ'</span>,<span class="string">'Ⅴ'</span>],</span><br><span class="line">    nowPage:<span class="number">1</span></span><br><span class="line">  &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    <span class="comment">//传递的参数时下标</span></span><br><span class="line">    choosePage:<span class="function"><span class="keyword">function</span> (<span class="params">page</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.nowPage = (page+<span class="number">1</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//下一页</span></span><br><span class="line">    nextPage:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">this</span>.nowPage &gt;= <span class="number">5</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">this</span>.nowPage++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>这里用的全局变量Vue，用script 标签引入的。</p>
-
+<ol>
+<li><p>引入vue-resource.js</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/vue-resource.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接发起网络请求</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$http</span><br><span class="line">  .get(url)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// response.data</span></span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>e.g.</p>
+<p>html代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">product-list</span>&gt;</span><span class="tag">&lt;/<span class="name">product-list</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>js代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'product-list'</span>,&#123;</span><br><span class="line">  data:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      myList:[]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">    loadData: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">      <span class="comment">// 这里的数据是json 格式</span></span><br><span class="line">      <span class="keyword">this</span>.$http</span><br><span class="line">        .get(<span class="string">"http://jsonplaceholder.typicode.com/users"</span>)</span><br><span class="line">        .then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(response);</span><br><span class="line">          <span class="keyword">this</span>.myList = response.data;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  template:<span class="string">`</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li v-for="tmp in myList"&gt;&#123;&#123;tmp&#125;&#125;&lt;/li&gt;</span><br><span class="line">      &lt;li&gt;</span><br><span class="line">        &lt;button @click="loadData"&gt;加载更多&lt;/button&gt;</span><br><span class="line">      &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  `</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -296,16 +300,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/01/02/Vue2.0 自定义指令/">
-                    Vue2.0 自定义指令
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/11/11/js内存泄漏/">
-                    js内存泄漏
+                <a href="/2017/01/16/Vue2.0 嵌套路由/">
+                    Vue2.0 嵌套路由
                 </a>
             </div>
         
@@ -317,7 +315,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#实现效果如图"><span class="toc-number">1.</span> <span class="toc-text">实现效果如图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#样式"><span class="toc-number">2.</span> <span class="toc-text">样式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#html代码"><span class="toc-number">3.</span> <span class="toc-text">html代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#js代码"><span class="toc-number">4.</span> <span class="toc-text">js代码</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -344,7 +342,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/28/Vue2.0 页码练习/" data-title="Vue2.0 页码练习" data-url="http://yoursite.com/2016/12/28/Vue2.0 页码练习/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/17/Vue2.0 与远程服务端通信/" data-title="Vue2.0 与远程服务端通信" data-url="http://yoursite.com/2017/01/17/Vue2.0 与远程服务端通信/"></div>
     <script>
         var duoshuoQuery = {short_name:"mikotocloud"};
         var loadComment = function(){
@@ -367,15 +365,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/01/02/Vue2.0 自定义指令/" title="上一篇: Vue2.0 自定义指令">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/11/11/js内存泄漏/" title="下一篇: js内存泄漏">
+            <a href="/2017/01/16/Vue2.0 嵌套路由/" title="下一篇: Vue2.0 嵌套路由">
                 <i class="fa fa-angle-right"></i>
             </a>
         
