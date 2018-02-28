@@ -174,7 +174,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACG/">ACG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/automation/">automation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grunt/">grunt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ps/">ps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACG/">ACG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES5/">ES5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/automation/">automation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grunt/">grunt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ps/">ps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
                     </div>
                 </section>
                 
@@ -239,6 +239,74 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Ajax中的get和post两种请求方式的异同" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/12/Ajax中的get和post两种请求方式的异同/" class="article-date">
+      <time datetime="2016-07-12T14:33:59.000Z" itemprop="datePublished">2016-07-12</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/12/Ajax中的get和post两种请求方式的异同/">Ajax中的get和post两种请求方式的异同</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <blockquote>
+<p>Ajax中经常用到get和post请求，那么什么时候用get请求，什么时候用post方式请求呢? 在回答前先要了解get和post的区别。</p>
+</blockquote>
+<h4 id="一个在url中，一个在虚拟载体里"><a href="#一个在url中，一个在虚拟载体里" class="headerlink" title="一个在url中，一个在虚拟载体里"></a>一个在url中，一个在虚拟载体里</h4><p>get是把参数数据队列加到提交表单的ACTION属性所指的URL中，值和表单内各个字段一一对应，在URL中可以看到。post是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。</p>
+<h4 id="获取参数"><a href="#获取参数" class="headerlink" title="获取参数"></a>获取参数</h4><p>对于get方式，服务器端用Request.QueryString获取变量的值，对于post方式，服务器端用Request.Form获取提交的数据。两种方式的参数都可以用Request来获得。</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/">ajax</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2016/07/12/Ajax中的get和post两种请求方式的异同/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-给github添加README" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -290,7 +358,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2016/06/30/给github添加README/#more">阅读全文 >></a>
+          <a href="/2016/06/30/给github添加README/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -358,7 +426,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2016/06/28/hexo搭建过程/#more">阅读全文 >></a>
+          <a href="/2016/06/28/hexo搭建过程/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -427,7 +495,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2016/05/26/js DOM操作/#more">阅读全文 >></a>
+          <a href="/2016/05/26/js DOM操作/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -496,7 +564,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2016/05/18/ps切图/#more">阅读全文 >></a>
+          <a href="/2016/05/18/ps切图/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -564,7 +632,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2016/04/22/九九八十一/#more">阅读全文 >></a>
+          <a href="/2016/04/22/九九八十一/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -631,7 +699,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2016/04/09/css center/#more">阅读全文 >></a>
+          <a href="/2016/04/09/css center/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -698,7 +766,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2016/03/26/Markdown语法/#more">阅读全文 >></a>
+          <a href="/2016/03/26/Markdown语法/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -758,7 +826,7 @@
       
       
         <p class="article-more-link">
-          <a href="/2016/03/22/hello-world/#more">阅读全文 >></a>
+          <a href="/2016/03/22/hello-world/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
