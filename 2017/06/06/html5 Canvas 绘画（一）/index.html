@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="gaea2" />
+
+
+
+<meta name="description" content="canvas 标签只是图形容器，需要使用脚本来绘制图形。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html5 Canvas 绘画（一）">
+<meta property="og:url" content="http://yoursite.com/2017/06/06/html5 Canvas 绘画（一）/index.html">
+<meta property="og:site_name" content="gaea2">
+<meta property="og:description" content="canvas 标签只是图形容器，需要使用脚本来绘制图形。">
+<meta property="og:image" content="http://yoursite.com/images/canvas.png">
+<meta property="og:image" content="http://yoursite.com/images/canvastext.png">
+<meta property="og:updated_time" content="2018-03-01T07:29:01.921Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="html5 Canvas 绘画（一）">
+<meta name="twitter:description" content="canvas 标签只是图形容器，需要使用脚本来绘制图形。">
+<meta name="twitter:image" content="http://yoursite.com/images/canvas.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>html5 Canvas 绘画（一） | gaea2</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">gaea2</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">gaea2 | 前端笔记</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/随笔/">随笔</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" href="https://github.com/Gaea2" title="GitHub"></a>
+                            
+                                <a class="fa Email" href="mailto:mikoto.gaea2@gmail.com" title="Email"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACG/">ACG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES5/">ES5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/automation/">automation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grunt/">grunt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ps/">ps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svg/">svg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://zzukylin.github.io/">zzukylin&#39;s blog</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">gaea2</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">gaea2</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">gaea2 | 前端笔记</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/随笔/">随笔</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/Gaea2" title="GitHub"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:mikoto.gaea2@gmail.com" title="Email"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-html5 Canvas 绘画（一）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/06/html5 Canvas 绘画（一）/" class="article-date">
+      <time datetime="2017-06-06T11:19:59.000Z" itemprop="datePublished">2017-06-06</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      html5 Canvas 绘画（一）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html5/">html5</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p><code>canvas</code> 标签只是图形容器，需要使用脚本来绘制图形。</p>
+</blockquote>
+<a id="more"></a>
+<h5 id="Canvas-画布"><a href="#Canvas-画布" class="headerlink" title="Canvas: 画布"></a>Canvas: 画布</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"c2"</span> <span class="attr">width</span>=<span class="string">"500"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注意: 画布高度与宽度只能使用html/js 属性来赋值<br>不能使用css<br>每个画布上有且只有一个画笔,进行绘图</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var ctx = c2.getContext("2d");  // 获取画笔，这里的"2d" 是固定套路</span><br></pre></td></tr></table></figure>
+<h5 id="Canvas-绘制矩形"><a href="#Canvas-绘制矩形" class="headerlink" title="Canvas 绘制矩形"></a>Canvas 绘制矩形</h5><p>矩形的定位点在自己的左上角</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ctx.lineWidth = <span class="number">1</span>;<span class="comment">// 描边宽度(边线宽度)</span></span><br><span class="line">ctx.fillStyle = <span class="string">"#000"</span>;<span class="comment">// 填充的样式</span></span><br><span class="line">ctx.strokeStyle=<span class="string">"#aaa"</span>;<span class="comment">// 描边样式</span></span><br><span class="line"></span><br><span class="line">ctx.fillRect(x,y,w,h);<span class="comment">// 填充一个矩形</span></span><br><span class="line">ctx.strokeRect(x,y,w,h);<span class="comment">// 描边一个矩形</span></span><br><span class="line">ctx.clearRect(x,y,w,h);<span class="comment">// 清除一个矩形范围内的绘图</span></span><br></pre></td></tr></table></figure>
+<p>e.g.</p>
+<p>效果</p>
+<p><img src="/images/canvas.png" alt="canvas"></p>
+<p>css代码<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">canvas</span>&#123;<span class="attribute">background</span>: <span class="number">#DCDCDC</span>;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>html代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"c2"</span> <span class="attr">width</span>=<span class="string">"500"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>js代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、获取画笔</span></span><br><span class="line"><span class="keyword">var</span> ctx=c2.getContext(<span class="string">"2d"</span>);<span class="comment">// 这里的"2d" 是套路</span></span><br><span class="line"><span class="comment">// 2、设置填充样式</span></span><br><span class="line">ctx.fillStyle=<span class="string">"#71C671"</span>;<span class="comment">// 填充颜色</span></span><br><span class="line"><span class="comment">// 3、填充矩形</span></span><br><span class="line">ctx.fillRect(<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">80</span>);<span class="comment">// ctx.fillRect(x,y,width,height); 左上</span></span><br><span class="line">ctx.fillStyle=<span class="string">"#CD96CD"</span>;<span class="comment">// 换颜色</span></span><br><span class="line">ctx.fillRect(<span class="number">0</span>,<span class="number">320</span>,<span class="number">100</span>,<span class="number">80</span>);<span class="comment">// 左下</span></span><br><span class="line">ctx.fillRect(<span class="number">200</span>,<span class="number">160</span>,<span class="number">100</span>,<span class="number">80</span>);<span class="comment">// 居中</span></span><br><span class="line">ctx.fillRect(<span class="number">400</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">80</span>);<span class="comment">// 右上</span></span><br><span class="line">ctx.fillRect(<span class="number">400</span>,<span class="number">320</span>,<span class="number">100</span>,<span class="number">80</span>);<span class="comment">// 右下</span></span><br></pre></td></tr></table></figure></p>
+<p>练习：在画布上描边一个可以左右移动的矩形。提示: 使用定时器+先清除画布+再重新绘制矩形(x不停增加)</p>
+<p>css、html代码同上</p>
+<p>js代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ctx=c2.getContext(<span class="string">"2d"</span>);<span class="comment">// 获取画笔，大写2D 不行</span></span><br><span class="line">ctx.strokeStyle=<span class="string">"#218868"</span>;</span><br><span class="line"><span class="keyword">var</span> x=<span class="number">0</span>;<span class="comment">// x 坐标</span></span><br><span class="line"><span class="keyword">var</span> xDirect=<span class="number">1</span>;<span class="comment">// 1 向右, -1 向左</span></span><br><span class="line"><span class="keyword">var</span> time=setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   ctx.clearRect(<span class="number">0</span>,<span class="number">0</span>,<span class="number">500</span>,<span class="number">400</span>);<span class="comment">// 清除一个矩形范围内的绘图</span></span><br><span class="line">   x+=<span class="number">3</span>*xDirect;</span><br><span class="line">   ctx.strokeRect(x,<span class="number">0</span>,<span class="number">100</span>,<span class="number">80</span>);</span><br><span class="line">   <span class="keyword">if</span>(x&gt;<span class="number">400</span>)xDirect=<span class="number">-1</span>;<span class="comment">// 400 是因为画布宽500 - 自身宽100 =400</span></span><br><span class="line">   <span class="keyword">else</span> <span class="keyword">if</span>(x&lt;<span class="number">0</span>)xDirect=<span class="number">1</span>;</span><br><span class="line">&#125;,<span class="number">30</span>)</span><br></pre></td></tr></table></figure></p>
+<h5 id="Canvas-绘制文本"><a href="#Canvas-绘制文本" class="headerlink" title="Canvas 绘制文本"></a>Canvas 绘制文本</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ctx.textBaseline = <span class="string">"alphabetic"</span>;<span class="comment">// 文本基线</span></span><br><span class="line">ctx.font = <span class="string">"19px sans-serif"</span>;<span class="comment">// 文本大小和字体</span></span><br><span class="line">ctx.fillText(str,x,y);<span class="comment">// 填充一段文本</span></span><br><span class="line">ctx.strokText(str,x,y);<span class="comment">// 描边一段文本</span></span><br><span class="line">ctx.measureText(str);<span class="comment">// 检测文本宽度 &#123;width:x&#125;</span></span><br></pre></td></tr></table></figure>
+<p>e.g.</p>
+<p>效果</p>
+<p><img src="/images/canvastext.png" alt="canvastext"></p>
+<p>css、html代码同上</p>
+<p>js代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">"nibaba"</span>;</span><br><span class="line"><span class="keyword">var</span> ctx=c2.getContext(<span class="string">"2d"</span>);<span class="comment">// 获取画笔</span></span><br><span class="line">ctx.font = <span class="string">"19px sans-serif"</span>;<span class="comment">// 文本大小和字体</span></span><br><span class="line">ctx.textBaseline = <span class="string">"top"</span>;<span class="comment">// 文本基线</span></span><br><span class="line">ctx.fillText(str,<span class="number">0</span>,<span class="number">0</span>);<span class="comment">//填充文本，左上</span></span><br><span class="line"><span class="keyword">var</span> w = ctx.measureText(str).width;<span class="comment">// 检测文本宽度</span></span><br><span class="line">ctx.fillText(str,<span class="number">500</span>-w,<span class="number">0</span>);<span class="comment">// 填充文本，右上</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/06/07/html5 Canvas 绘画（二）/">
+                    html5 Canvas 绘画（二）
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/02/15/ES6 特性/">
+                    ES6 特性
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#Canvas-画布"><span class="toc-number">1.</span> <span class="toc-text">Canvas: 画布</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Canvas-绘制矩形"><span class="toc-number">2.</span> <span class="toc-text">Canvas 绘制矩形</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Canvas-绘制文本"><span class="toc-number">3.</span> <span class="toc-text">Canvas 绘制文本</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/06/06/html5 Canvas 绘画（一）/" data-title="html5 Canvas 绘画（一）" data-url="http://yoursite.com/2017/06/06/html5 Canvas 绘画（一）/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"mikotocloud"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/06/07/html5 Canvas 绘画（二）/" title="上一篇: html5 Canvas 绘画（二）">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/02/15/ES6 特性/" title="下一篇: ES6 特性">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/html5 svg 绘图（二）/">html5 svg 绘图（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/08/html5 svg 绘图（一）/">html5 svg 绘图（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/07/html5 Canvas 绘画（二）/">html5 Canvas 绘画（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/06/html5 Canvas 绘画（一）/">html5 Canvas 绘画（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/15/ES6 特性/">ES6 特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/14/ES5 特性/">ES5 特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/17/Vue2.0 与远程服务端通信/">Vue2.0 与远程服务端通信</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/16/Vue2.0 嵌套路由/">Vue2.0 嵌套路由</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/Vue2.0 VueRouter 实现参数传递/">Vue2.0 VueRouter 实现参数传递</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/13/Vue2.0 SPA 单页应用/">Vue2.0 SPA 单页应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/Vue2.0 兄弟组件间通信/">Vue2.0 兄弟组件间通信</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/11/Vue2.0 父子组件间通信（三）/">Vue2.0 父子组件间通信（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/浅析Vue2.0 v-model 的实现原理/">浅析Vue2.0 v-model 的实现原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/Vue2.0 父子组件间通信（二）/">Vue2.0 父子组件间通信（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/Vue2.0 父子组件间通信（一）/">Vue2.0 父子组件间通信（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/Vue2.0 中的计算属性和侦听器/">Vue2.0 中的计算属性和侦听器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/Vue2.0 组件的生命周期/">Vue2.0 组件的生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/Vue2.0 组件/">Vue2.0 组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/当hexo d 部署出现各种问题时/">当hexo d 部署出现各种问题时</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/わが征くは星の大海/">わが征くは星の大海</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/Vue2.0 自定义过滤器/">Vue2.0 自定义过滤器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/02/Vue2.0 自定义指令/">Vue2.0 自定义指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/28/Vue2.0 页码练习/">Vue2.0 页码练习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/11/js内存泄漏/">js内存泄漏</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/07/更新技能树总是愉快的/">更新技能树总是愉快的</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/05/虚拟机装 CentOs 7 黑屏解决办法/">虚拟机装 CentOs 7 黑屏解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/24/gulp前端自动化/">gulp前端自动化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/10/哈希表实现“数组中只出现一次的数字”/">哈希表实现“数组中只出现一次的数字”</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/26/jsfuck有点好玩/">jsfuck有点好玩（雾</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/20/js正则表达式/">js正则表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/15/人生无常/">人生无常</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/13/js进制转换/">js进制转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/10/也谈谈闭包/">也谈谈闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/06/grunt前端自动化/">grunt前端自动化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/25/DOCTYPE与浏览器模式浅析/">DOCTYPE与浏览器模式浅析</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/12/Ajax中的get和post两种请求方式的异同/">Ajax中的get和post两种请求方式的异同</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/30/给github添加README/">给github添加README</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/28/hexo搭建过程/">win下Hexo博客的搭建过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/js DOM操作/">原生js学习——DOM操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/18/ps切图/">ps切图篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/22/九九八十一/">九九八十一</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/09/css center/">css居中各种实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/26/Markdown语法/">Markdown 语法学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/22/hello-world/">hello world</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018 gaea2
+            </div>
+            
+        </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
