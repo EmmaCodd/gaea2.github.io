@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="实际生活中的应用界面，通常由多层嵌套的组件组合而成。同样地，URL 中各段动态路径也按某种结构对应嵌套的各层组件。">
+<meta name="description" content="html5 提供了两种在客户端存储数据的新方法：localStorage - 没有时间限制的数据存储sessionStorage - 针对一个session 的数据存储之前，这些都是由cookie 完成的。但是cookie 不适合大量数据的存储，因为它们由每个对服务器的请求来传递，这使得cookie 速度很慢且效率不高。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue2.0 嵌套路由">
-<meta property="og:url" content="http://yoursite.com/2017/01/16/Vue2.0 嵌套路由/index.html">
+<meta property="og:title" content="html5 Web存储(Web Storage)">
+<meta property="og:url" content="http://yoursite.com/2017/06/15/html5 Web存储(Web Storage)/index.html">
 <meta property="og:site_name" content="gaea2">
-<meta property="og:description" content="实际生活中的应用界面，通常由多层嵌套的组件组合而成。同样地，URL 中各段动态路径也按某种结构对应嵌套的各层组件。">
-<meta property="og:updated_time" content="2018-02-27T15:52:15.487Z">
+<meta property="og:description" content="html5 提供了两种在客户端存储数据的新方法：localStorage - 没有时间限制的数据存储sessionStorage - 针对一个session 的数据存储之前，这些都是由cookie 完成的。但是cookie 不适合大量数据的存储，因为它们由每个对服务器的请求来传递，这使得cookie 速度很慢且效率不高。">
+<meta property="og:updated_time" content="2018-03-01T18:24:38.515Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue2.0 嵌套路由">
-<meta name="twitter:description" content="实际生活中的应用界面，通常由多层嵌套的组件组合而成。同样地，URL 中各段动态路径也按某种结构对应嵌套的各层组件。">
+<meta name="twitter:title" content="html5 Web存储(Web Storage)">
+<meta name="twitter:description" content="html5 提供了两种在客户端存储数据的新方法：localStorage - 没有时间限制的数据存储sessionStorage - 针对一个session 的数据存储之前，这些都是由cookie 完成的。但是cookie 不适合大量数据的存储，因为它们由每个对服务器的请求来传递，这使得cookie 速度很慢且效率不高。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -54,7 +54,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Vue2.0 嵌套路由 | gaea2</title>
+<title>html5 Web存储(Web Storage) | gaea2</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -233,11 +233,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Vue2.0 嵌套路由" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-html5 Web存储(Web Storage)" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/01/16/Vue2.0 嵌套路由/" class="article-date">
-      <time datetime="2017-01-16T11:19:59.000Z" itemprop="datePublished">2017-01-16</time>
+      <a href="/2017/06/15/html5 Web存储(Web Storage)/" class="article-date">
+      <time datetime="2017-06-15T11:19:59.000Z" itemprop="datePublished">2017-06-15</time>
 </a>
 
 
@@ -252,7 +252,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Vue2.0 嵌套路由
+      html5 Web存储(Web Storage)
     </h1>
   
 
@@ -263,7 +263,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html5/">html5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sessionStorage/">sessionStorage</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -274,23 +274,34 @@
       
           
         <blockquote>
-<p>实际生活中的应用界面，通常由多层嵌套的组件组合而成。同样地，URL 中各段动态路径也按某种结构对应嵌套的各层组件。</p>
+<p>html5 提供了两种在客户端存储数据的新方法：<br>localStorage - 没有时间限制的数据存储<br>sessionStorage - 针对一个session 的数据存储<br>之前，这些都是由cookie 完成的。但是cookie 不适合大量数据的存储，因为它们由每个对服务器的请求来传递，这使得cookie 速度很慢且效率不高。</p>
 </blockquote>
 <a id="more"></a>
-<p>如果一个SPA 中的某个页面，根据不同的地址，嵌套其它的组件，称为路由嵌套。而VueRouter 支持路由嵌套。</p>
+<p>在客户端存储数据可以使用技术</p>
 <ol>
-<li><p>在准备嵌套其它组件(如Step1、Step2) 的组件(如OrderConfirm) 模板中，指定一个容器router-view</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">template:<span class="string">`</span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;h1&gt;此处不变：这是订单确认页面&lt;/h1&gt;</span><br><span class="line">  &lt;!--效果是点击按钮一，h1 下方空白处显示组件step1 的内容; 点击按钮二，h1 下方空白处显示切换为组件step2 的内容--&gt;</span><br><span class="line">  &lt;!--局部刷新的感觉--&gt;</span><br><span class="line">  &lt;button @click="jump('/step1')"&gt;</span><br><span class="line">    第一步</span><br><span class="line">  &lt;/button&gt;</span><br><span class="line">  &lt;button @click="jump('/step2')"&gt;</span><br><span class="line">    第二步</span><br><span class="line">  &lt;/button&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">`</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>组件OrderConfirm 的路由词典处加一个children 属性</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myRoutes = [</span><br><span class="line">  &#123;path:<span class="string">''</span>,component:Cart&#125;,</span><br><span class="line">  &#123;path:<span class="string">'/cart'</span>,component:Cart&#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path:<span class="string">'/order'</span>,</span><br><span class="line">    component:OrderConfirm,</span><br><span class="line">    children:[</span><br><span class="line">      &#123;path:<span class="string">''</span>,component:Step1&#125;,</span><br><span class="line">      &#123;path:<span class="string">'/step1'</span>,component:Step1&#125;,</span><br><span class="line">      &#123;path:<span class="string">'/step2'</span>,component:Step2&#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-</li>
+<li>cookie技术: 浏览器兼容性好，不能超过4KB，操作复杂</li>
+<li>flash存储: 依据flash 播放器</li>
+<li>html5 WebStorage: 不能超8MB，操作简单</li>
+<li>IndexDB: 可存储大量数据，还不是标准技术</li>
 </ol>
-<p>e.g.</p>
-<p>html代码</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>js代码</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Cart = Vue.component(<span class="string">'cart-component'</span>,&#123;</span><br><span class="line">  template:<span class="string">`</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;这是购物车&lt;/h1&gt;</span><br><span class="line">      &lt;router-link to="/order"&gt;结算&lt;/router-link&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  `</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> OrderConfirm = Vue.component(<span class="string">'order-confirm'</span>,&#123;</span><br><span class="line">  methods:&#123;</span><br><span class="line">    jump:<span class="function"><span class="keyword">function</span> (<span class="params">desPath</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.$router.push(desPath);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  template:<span class="string">`</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;此处不变：这是订单确认页面&lt;/h1&gt;</span><br><span class="line">      &lt;!--效果是点击按钮一，h1 下方空白处显示组件step1 的内容; 点击按钮二，h1 下方空白处显示切换为组件step2 的内容--&gt;</span><br><span class="line">      &lt;!--局部刷新的感觉--&gt;</span><br><span class="line">      &lt;button @click="jump('/step1')"&gt;</span><br><span class="line">        第一步</span><br><span class="line">      &lt;/button&gt;</span><br><span class="line">      &lt;button @click="jump('/step2')"&gt;</span><br><span class="line">        第二步</span><br><span class="line">      &lt;/button&gt;</span><br><span class="line">      &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  `</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Step1 = Vue.component(<span class="string">'step1'</span>,&#123;</span><br><span class="line">  template:<span class="string">'&lt;h1&gt;这是订单确认的第一步&lt;/h1&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">var</span> Step2 = Vue.component(<span class="string">'step2'</span>,&#123;</span><br><span class="line">  template:<span class="string">'&lt;h1&gt;这是订单确认的第二步&lt;/h1&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myRoutes = [</span><br><span class="line">  &#123;path:<span class="string">''</span>,component:Cart&#125;,</span><br><span class="line">  &#123;path:<span class="string">'/cart'</span>,component:Cart&#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    path:<span class="string">'/order'</span>,</span><br><span class="line">    component:OrderConfirm,</span><br><span class="line">    children:[</span><br><span class="line">      &#123;path:<span class="string">''</span>,component:Step1&#125;,</span><br><span class="line">      &#123;path:<span class="string">'/step1'</span>,component:Step1&#125;,</span><br><span class="line">      &#123;path:<span class="string">'/step2'</span>,component:Step2&#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> myRouter = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes:myRoutes</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span>,</span><br><span class="line">  router:myRouter</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>session 会话: 浏览器从打开某个网站的一个页面开始，中间可能打开多个页面，直到关闭浏览器，整个过程称为”一次会话”。</p>
+<p>WebStorage技术中，浏览器为用户提供两个对象</p>
+<ol>
+<li><p>window.sessionStorage 类数组对象，会话级数据存储<br>此对象可供此会话中所有页面共同使用，浏览器一旦关闭数据就消失。作用: 登录用户名;登录用户id;改用户权限<br>sessionStorage[key]=value;            #保存数据<br>sessionStorage.setItem(key,value);        #保存数据<br>sessionStorage[key];                    #获取数据<br>sessionStorage.getItem(key);            #获取数据<br>sessionStorage.removeItem(key);        #删除数据<br>sessionStorage.clear();                #清除数据<br>sessionStorage.length;                #数据个数<br>sessionStorage.key(i);                #获取第i 个key</p>
+<p>e.g. 由set.html 通过sessionStorage 向set.html 传数据</p>
+<p>set.html 代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>保存数据 sessionStorage<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"get.html"</span>&gt;</span>传输数据跳转到下一个页面<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><br><span class="line">    // Chrome 浏览器开发者工具|Application|Session Storage 可以看到下面两条数据</span><br><span class="line">    sessionStorage["name"]="你爸爸";// 保存数据方式一</span><br><span class="line">    sessionStorage.setItem("age",21);// 保存数据方式二</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>get.html 代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>获取数据 sessionStorage<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><br><span class="line">    var name = sessionStorage["name"];// 获取数据，同sessionStorage.getItem("name");</span><br><span class="line">    console.log("名字:"+name);</span><br><span class="line">    var age = sessionStorage.getItem("age");// 获取数据</span><br><span class="line">    console.log("年龄:"+age);</span><br><span class="line">    console.log("数据个数:"+sessionStorage.length);// 数据个数</span><br><span class="line">    console.log("获取第0 个key:"+sessionStorage.key(0));// 获取第i 个key</span><br><span class="line"></span><br><span class="line">    sessionStorage.removeItem("age");// 删除数据，Application|Session Storage 中没这一项了</span><br><span class="line">    sessionStorage.clear();// 清除数据(全部)</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>localStorage类数组对象，本地存储(跨会话)<br>在浏览器所能管理的外存(硬盘)中存储着用户浏览数据，可供此次会话及后续会话的页面共同使用。浏览器关闭也不会消失——永久存在<br>localStorage [key]=value;            #保存数据<br>localStorage.setItem(key,value);    #保存数据<br>localStorage [key];                #获取数据<br>localStorage.getItem(key);            #获取数据<br>localStorage.removeItem(key);        #删除数据<br>localStorage.clear();                #清除数据<br>localStorage.length;                #数据个数<br>localStorage.key(i);               #获取第i个key</p>
+<p>e.g. 由set.html 通过localStorage 向set.html 传数据</p>
+<p>set.html 代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>localStorage 保存数据<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"get.html"</span>&gt;</span>you jump<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><br><span class="line">    localStorage["name"]="速水";</span><br><span class="line">    localStorage.setItem("age","17");</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>get.html 代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h4</span>&gt;</span>localStorage 获取数据<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><br><span class="line">    var name = localStorage["name"];</span><br><span class="line">    console.log(name);</span><br><span class="line">    var age = localStorage["age"];</span><br><span class="line">    console.log(age);</span><br><span class="line">    var length = localStorage.length;</span><br><span class="line">    console.log(length);</span><br><span class="line">    var kkey = localStorage.key(0);</span><br><span class="line">    console.log(kkey);</span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
       
     </div>
     
@@ -301,16 +312,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/01/17/Vue2.0 与远程服务端通信/">
-                    Vue2.0 与远程服务端通信
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/01/13/Vue2.0 VueRouter 实现参数传递/">
-                    Vue2.0 VueRouter 实现参数传递
+                <a href="/2017/06/14/html5 Web Worker/">
+                    html5 web worker
                 </a>
             </div>
         
@@ -349,7 +354,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/16/Vue2.0 嵌套路由/" data-title="Vue2.0 嵌套路由" data-url="http://yoursite.com/2017/01/16/Vue2.0 嵌套路由/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/06/15/html5 Web存储(Web Storage)/" data-title="html5 Web存储(Web Storage)" data-url="http://yoursite.com/2017/06/15/html5 Web存储(Web Storage)/"></div>
     <script>
         var duoshuoQuery = {short_name:"mikotocloud"};
         var loadComment = function(){
@@ -372,15 +377,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/01/17/Vue2.0 与远程服务端通信/" title="上一篇: Vue2.0 与远程服务端通信">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/01/13/Vue2.0 VueRouter 实现参数传递/" title="下一篇: Vue2.0 VueRouter 实现参数传递">
+            <a href="/2017/06/14/html5 Web Worker/" title="下一篇: html5 web worker">
                 <i class="fa fa-angle-right"></i>
             </a>
         
