@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="html5 geolocation（地理定位）用于定位用户的位置。鉴于该特性可能侵犯用户的隐私，除非用户同意，否则用户位置信息不可用。">
+<meta name="description" content="React 较创新的引入了state 的概念，将组件比作一个状态机，组件所呈现的任何变化都可以通过state 来管理。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="html5 地理定位">
-<meta property="og:url" content="http://yoursite.com/2017/06/12/html5 地理定位/index.html">
+<meta property="og:title" content="ReactJS 状态和生命周期">
+<meta property="og:url" content="http://yoursite.com/2018/01/11/ReactJS 状态和生命周期/index.html">
 <meta property="og:site_name" content="gaea2">
-<meta property="og:description" content="html5 geolocation（地理定位）用于定位用户的位置。鉴于该特性可能侵犯用户的隐私，除非用户同意，否则用户位置信息不可用。">
-<meta property="og:updated_time" content="2018-03-01T10:09:22.225Z">
+<meta property="og:description" content="React 较创新的引入了state 的概念，将组件比作一个状态机，组件所呈现的任何变化都可以通过state 来管理。">
+<meta property="og:updated_time" content="2018-03-03T18:49:29.661Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="html5 地理定位">
-<meta name="twitter:description" content="html5 geolocation（地理定位）用于定位用户的位置。鉴于该特性可能侵犯用户的隐私，除非用户同意，否则用户位置信息不可用。">
+<meta name="twitter:title" content="ReactJS 状态和生命周期">
+<meta name="twitter:description" content="React 较创新的引入了state 的概念，将组件比作一个状态机，组件所呈现的任何变化都可以通过state 来管理。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -54,7 +54,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>html5 地理定位 | gaea2</title>
+<title>ReactJS 状态和生命周期 | gaea2</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -233,11 +233,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-html5 地理定位" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-ReactJS 状态和生命周期" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/06/12/html5 地理定位/" class="article-date">
-      <time datetime="2017-06-12T11:19:59.000Z" itemprop="datePublished">2017-06-12</time>
+      <a href="/2018/01/11/ReactJS 状态和生命周期/" class="article-date">
+      <time datetime="2018-01-11T11:19:59.000Z" itemprop="datePublished">2018-01-11</time>
 </a>
 
 
@@ -252,7 +252,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      html5 地理定位
+      ReactJS 状态和生命周期
     </h1>
   
 
@@ -263,7 +263,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/geolocation/">geolocation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html5/">html5</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactJS/">ReactJS</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -274,24 +274,32 @@
       
           
         <blockquote>
-<p>html5 geolocation（地理定位）用于定位用户的位置。鉴于该特性可能侵犯用户的隐私，除非用户同意，否则用户位置信息不可用。</p>
+<p>React 较创新的引入了state 的概念，将组件比作一个状态机，组件所呈现的任何变化都可以通过state 来管理。</p>
 </blockquote>
 <a id="more"></a>
-<p>geolocation: 地理定位，使用js获取当前浏览器所在地理坐标(经度，维度，海拨，速度) 数据，实际应用：饿了么，高德导航等。</p>
-<p>手机浏览器如何获取定位信息</p>
-<ol>
-<li>首选手机中GPS芯片与卫星通信，定位精度在米</li>
-<li>次选手机通信基站定位获取，定位精度在公里</li>
+<h4 id="state-状态"><a href="#state-状态" class="headerlink" title="state 状态"></a>state 状态</h4><h5 id="功能："><a href="#功能：" class="headerlink" title="功能："></a>功能：</h5><ol>
+<li>管理数据</li>
+<li>数据绑定(单向：数据-&gt;视图)</li>
 </ol>
-<p>PC浏览器如何获取定位信息</p>
-<ol>
-<li>通过ip地址反向解析，定位精度于ip地址库大小</li>
-<li>html5 中提供新的对象: geolocation 用于获取浏览器定位信息</li>
+<h5 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h5><ol>
+<li><p>初始化数据，在组件类的内部指定一个方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">getInitialState:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    count:<span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>读数据</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.state.count</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改数据</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.setState(&#123;count:<span class="number">2</span>&#125;);</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <p>e.g.</p>
-<p>html代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span>读取我的定位信息<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>js代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  navigator</span><br><span class="line">    .geolocation</span><br><span class="line">    .getCurrentPosition(showPosition,errCB);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果定位成功执行该函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showPosition</span>(<span class="params">pos</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"定位时间"</span>,pos.timestamp);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"定位纬度"</span>,pos.coords.latitude);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"定位经度"</span>,pos.coords.longitude);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"定位海拨"</span>,pos.coords.altitude);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"定位速度"</span>,pos.coords.speed);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//如果定位失败执行该函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">errCB</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(err.code);</span><br><span class="line">  <span class="built_in">console</span>.log(err.message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+<p>html代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>js代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> SwitchComponent = React.createClass(&#123;</span><br><span class="line">  <span class="comment">// 初始化状态</span></span><br><span class="line">  getInitialState:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">// 此方法名固定，不需要调用组件自己触发</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      myValue:<span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  handleClick:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 读状态</span></span><br><span class="line">    <span class="keyword">var</span> nowValue = <span class="keyword">this</span>.state.myValue;</span><br><span class="line">    <span class="comment">// 修改状态</span></span><br><span class="line">    <span class="keyword">this</span>.setState(</span><br><span class="line">      &#123;myValue:!nowValue&#125;,<span class="comment">// 状态已改</span></span><br><span class="line">      <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">// 当状态设置成功时的处理函数</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.myValue);</span><br><span class="line">      &#125;</span><br><span class="line">    );</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span></span><br><span class="line">      <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span></span><br><span class="line">      &#123;this.state.myValue?'开':'关'&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">SwitchComponent</span>/&gt;</span></span>,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'example'</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<h4 id="lifecycle-生命周期"><a href="#lifecycle-生命周期" class="headerlink" title="lifecycle 生命周期"></a>lifecycle 生命周期</h4><p>mount udpate unmount</p>
+<p>componentWillMount 准备挂载<br>componentDidMount 挂载完毕<br>componentWillUpdate 准备更新，当props、state 发生变化时会执行<br>componentDidUpdate 更新完成<br>componentWillUnmount 移除</p>
+<p>e.g.</p>
+<p>html代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> LifeCycleComponent = React.createClass(&#123;</span><br><span class="line">  getInitialState:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;count:<span class="number">1</span>&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  componentWillMount:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 暂不能操作DOM 元素</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'准备挂载'</span>,<span class="keyword">this</span>.refs.myInput);</span><br><span class="line">  &#125;,</span><br><span class="line">  componentDidMount:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 如果想操作DOM 元素，必须等到这步开始</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'挂载完毕'</span>,<span class="keyword">this</span>.refs.myInput);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 在props 或state 发生变化时会执行的处理函数</span></span><br><span class="line">  componentWillUpdate:<span class="function"><span class="keyword">function</span>(<span class="params">nextProps,nextState</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// this.setState(&#123;count:100&#125;);形成死循环</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'准备更新'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(nextProps,nextState);</span><br><span class="line">  &#125;,</span><br><span class="line">  componentDidUpdate:<span class="function"><span class="keyword">function</span>(<span class="params">prevProps,prevState</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'更新完成'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(prevProps,prevState);</span><br><span class="line">  &#125;,</span><br><span class="line">  handleClick:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> nowCount = <span class="keyword">this</span>.state.count;</span><br><span class="line">    nowCount++;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;count:nowCount&#125;);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;this.state.count&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">"myInput"</span> <span class="attr">type</span>=<span class="string">"text"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span>clickMe<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  <span class="tag">&lt;<span class="name">LifeCycleComponent</span>/&gt;</span>,</span><br><span class="line">  document.getElementById('example')</span><br><span class="line">)</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -302,16 +310,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/06/13/html5 拖放API/">
-                    html5 拖放API
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/06/09/html5 svg 绘图（二）/">
-                    html5 svg 绘图（二）
+                <a href="/2018/01/10/ReactJS 组件间通信/">
+                    ReactJS 组件间通信
                 </a>
             </div>
         
@@ -323,7 +325,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#state-状态"><span class="toc-number">1.</span> <span class="toc-text">state 状态</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#功能："><span class="toc-number">1.1.</span> <span class="toc-text">功能：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#基本操作"><span class="toc-number">1.2.</span> <span class="toc-text">基本操作</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lifecycle-生命周期"><span class="toc-number">2.</span> <span class="toc-text">lifecycle 生命周期</span></a></li></ol>
         
     </div>
     <style>
@@ -350,7 +352,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/06/12/html5 地理定位/" data-title="html5 地理定位" data-url="http://yoursite.com/2017/06/12/html5 地理定位/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2018/01/11/ReactJS 状态和生命周期/" data-title="ReactJS 状态和生命周期" data-url="http://yoursite.com/2018/01/11/ReactJS 状态和生命周期/"></div>
     <script>
         var duoshuoQuery = {short_name:"mikotocloud"};
         var loadComment = function(){
@@ -373,15 +375,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/06/13/html5 拖放API/" title="Pre: html5 拖放API">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/06/09/html5 svg 绘图（二）/" title="Next: html5 svg 绘图（二）">
+            <a href="/2018/01/10/ReactJS 组件间通信/" title="Next: ReactJS 组件间通信">
                 <i class="fa fa-angle-right"></i>
             </a>
         
