@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="本文包括文本、图片、渐变对象、滤镜。">
+<meta name="description" content="React 中组件间的通信可以通过props 实现。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="html5 svg 绘图（二）">
-<meta property="og:url" content="http://yoursite.com/2017/06/09/html5 svg 绘图（二）/index.html">
+<meta property="og:title" content="ReactJS 组件间通信[暂定此名]">
+<meta property="og:url" content="http://yoursite.com/2018/01/10/ReactJS 组件间通信[暂定此名]/index.html">
 <meta property="og:site_name" content="gaea2">
-<meta property="og:description" content="本文包括文本、图片、渐变对象、滤镜。">
-<meta property="og:updated_time" content="2018-03-01T09:44:01.324Z">
+<meta property="og:description" content="React 中组件间的通信可以通过props 实现。">
+<meta property="og:updated_time" content="2018-03-03T15:35:48.406Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="html5 svg 绘图（二）">
-<meta name="twitter:description" content="本文包括文本、图片、渐变对象、滤镜。">
+<meta name="twitter:title" content="ReactJS 组件间通信[暂定此名]">
+<meta name="twitter:description" content="React 中组件间的通信可以通过props 实现。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -54,7 +54,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>html5 svg 绘图（二） | gaea2</title>
+<title>ReactJS 组件间通信[暂定此名] | gaea2</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -233,11 +233,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-html5 svg 绘图（二）" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-ReactJS 组件间通信[暂定此名]" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/06/09/html5 svg 绘图（二）/" class="article-date">
-      <time datetime="2017-06-09T11:19:59.000Z" itemprop="datePublished">2017-06-09</time>
+      <a href="/2018/01/10/ReactJS 组件间通信[暂定此名]/" class="article-date">
+      <time datetime="2018-01-10T11:19:59.000Z" itemprop="datePublished">2018-01-10</time>
 </a>
 
 
@@ -252,7 +252,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      html5 svg 绘图（二）
+      ReactJS 组件间通信[暂定此名]
     </h1>
   
 
@@ -263,7 +263,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html5/">html5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/svg/">svg</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ReactJS/">ReactJS</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -274,20 +274,26 @@
       
           
         <blockquote>
-<p>本文包括文本、图片、渐变对象、滤镜。</p>
+<p>React 中组件间的通信可以通过props 实现。</p>
 </blockquote>
 <a id="more"></a>
-<h5 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">text</span> <span class="attr">alignment-baseline</span>=<span class="string">"before-edge"</span></span><br><span class="line"><span class="attr">font-size</span>=<span class="string">""</span> <span class="attr">fill</span>=<span class="string">""</span> <span class="attr">stroke</span>=<span class="string">""</span> <span class="attr">x</span>= <span class="string">y</span>&gt;</span>文本内容<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h5 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">xlink:href</span>=<span class="string">"x.jpg"</span> <span class="attr">x</span>=<span class="string">""</span> <span class="attr">y</span>=<span class="string">""</span> <span class="attr">width</span>=<span class="string">""</span> <span class="attr">height</span>=<span class="string">""</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h5><ol>
+<li><p>传值</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Papa</span> <span class="attr">myName</span>=<span class="string">"nibaba"</span>&gt;</span><span class="tag">&lt;/<span class="name">Papa</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接收值 this.props.myName</p>
+</li>
+</ol>
 <p>e.g.</p>
-<p>html代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">id</span>=<span class="string">"s2"</span> <span class="attr">width</span>=<span class="string">"500"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">text</span> <span class="attr">font-size</span>=<span class="string">"50"</span></span><br><span class="line">   <span class="attr">fill</span>=<span class="string">"transparent"</span></span><br><span class="line">   <span class="attr">alignment-baseline</span>=<span class="string">"before-edge"</span></span><br><span class="line">   <span class="attr">stroke</span>=<span class="string">"green"</span></span><br><span class="line">   <span class="attr">x</span>=<span class="string">"10"</span> <span class="attr">y</span>=<span class="string">"20"</span>&gt;</span></span><br><span class="line">   gaea2@2017<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">image</span> <span class="attr">xlink:href</span>=<span class="string">"img/p3.png"</span></span><br><span class="line">   <span class="attr">x</span>=<span class="string">"250"</span><span class="attr">y</span>=<span class="string">"200"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="渐变对象"><a href="#渐变对象" class="headerlink" title="渐变对象"></a>渐变对象</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">defs</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--定义特效对象:渐变对象属于一种特效对象--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">linearGradient</span> <span class="attr">id</span>=<span class="string">"g3"</span> <span class="attr">x1</span>=<span class="string">""</span> <span class="attr">y1</span>=<span class="string">""</span> <span class="attr">x2</span>=<span class="string">""</span> <span class="attr">y2</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">"0%"</span> <span class="attr">stop-color</span>=<span class="string">"red"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">"50%"</span> <span class="attr">stop-color</span>=<span class="string">"yellow"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">"100%"</span> <span class="attr">stop-color</span>=<span class="string">"green"</span> /&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">linearGradient</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">defs</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ANY</span> <span class="attr">fill</span>=<span class="string">"url(#g3)"</span> <span class="attr">stroke</span>=<span class="string">"url(#g3)"</span>&gt;</span><span class="tag">&lt;/<span class="name">ANY</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>e.g.</p>
-<p>一个由白色渐变为绿色的矩形条。</p>
-<p>html代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">id</span>=<span class="string">"s2"</span> <span class="attr">width</span>=<span class="string">"500"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--定义渐变对象--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">defs</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">linearGradient</span> <span class="attr">id</span>=<span class="string">"g3"</span> <span class="attr">x1</span>=<span class="string">"0%"</span> <span class="attr">y1</span>=<span class="string">"0%"</span> <span class="attr">x2</span>=<span class="string">"0%"</span> <span class="attr">y2</span>=<span class="string">"100%"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">"0%"</span> <span class="attr">stop-color</span>=<span class="string">"#fff"</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">stop</span> <span class="attr">offset</span>=<span class="string">"100%"</span> <span class="attr">stop-color</span>=<span class="string">"green"</span>&gt;</span><span class="tag">&lt;/<span class="name">stop</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">linearGradient</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">defs</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">rect</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"100"</span> <span class="attr">fill</span>=<span class="string">"url(#g3)"</span>&gt;</span><span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h5 id="滤镜"><a href="#滤镜" class="headerlink" title="滤镜"></a>滤镜</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">defs</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">filter</span> <span class="attr">id</span>=<span class="string">"f2"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">feGaussianBlur</span> <span class="attr">stdDeviation</span>=<span class="string">"3"</span> /&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">defs</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ANY</span> <span class="attr">filter</span>=<span class="string">"url(#f2)"</span>&gt;</span><span class="tag">&lt;/<span class="name">ANY</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>e.g.</p>
-<p>html代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">id</span>=<span class="string">"s2"</span> <span class="attr">width</span>=<span class="string">"500"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">defs</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">filter</span> <span class="attr">id</span>=<span class="string">"f2"</span>&gt;</span></span><br><span class="line">         <span class="comment">&lt;!--高斯模糊滤镜--&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">feGaussianBlur</span> <span class="attr">stdDeviation</span>=<span class="string">"5"</span>&gt;</span><span class="tag">&lt;/<span class="name">feGaussianBlur</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">defs</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">text</span> <span class="attr">font-size</span>=<span class="string">"70"</span> <span class="attr">y</span>=<span class="string">"200"</span> <span class="attr">filter</span>=<span class="string">"url(#f2)"</span>&gt;</span>你爸爸<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>html代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>js代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> HeaderComponent = React.createClass(&#123;</span><br><span class="line">   render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;this.props.myTitle&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">   <span class="xml"><span class="tag">&lt;<span class="name">HeaderComponent</span> <span class="attr">myTitle</span>=<span class="string">"购物车"</span>/&gt;</span>,</span><br><span class="line">   document.getElementById('example')</span><br><span class="line">)</span></span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>this.props.children</li>
+</ol>
+<p>this.props.children 属性表示组件的所有子节点，类型不确定，如果当前组件没有子节点，就是undefined; 如果有一个子节点，数据类型是 object ；如果有多个子节点，数据类型就是 array；可以使用React.Children.map做遍历，帮助减少操作时异常处理。</p>
+<p>React创建的组件类中的props对象的属性和调用组件时传递的属性是一一对应的<br>在props对象中有一个children属性是特殊的。</p>
+<p>this.props.children 的值有三种可能： 。所以，处理 this.props.children 的时候要小心。</p>
+<p>React 提供一个工具方法 React.Children 来处理 this.props.children 。我们可以用 React.Children.map 来遍历子节点，而不用担心 this.props.children 的数据类型是 undefined 还是 object。</p>
 
       
     </div>
@@ -299,16 +305,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/06/12/html5 地理定位/">
-                    html5 地理定位
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/06/08/html5 svg 绘图（一）/">
-                    html5 svg 绘图（一）
+                <a href="/2018/01/09/ReactJS 初步/">
+                    ReactJS 初步
                 </a>
             </div>
         
@@ -320,7 +320,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#文本"><span class="toc-number">1.</span> <span class="toc-text">文本</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#图片"><span class="toc-number">2.</span> <span class="toc-text">图片</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#渐变对象"><span class="toc-number">3.</span> <span class="toc-text">渐变对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#滤镜"><span class="toc-number">4.</span> <span class="toc-text">滤镜</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#基本用法"><span class="toc-number">1.</span> <span class="toc-text">基本用法</span></a></li></ol>
         
     </div>
     <style>
@@ -347,7 +347,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/06/09/html5 svg 绘图（二）/" data-title="html5 svg 绘图（二）" data-url="http://yoursite.com/2017/06/09/html5 svg 绘图（二）/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2018/01/10/ReactJS 组件间通信[暂定此名]/" data-title="ReactJS 组件间通信[暂定此名]" data-url="http://yoursite.com/2018/01/10/ReactJS 组件间通信[暂定此名]/"></div>
     <script>
         var duoshuoQuery = {short_name:"mikotocloud"};
         var loadComment = function(){
@@ -370,15 +370,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/06/12/html5 地理定位/" title="上一篇: html5 地理定位">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/06/08/html5 svg 绘图（一）/" title="下一篇: html5 svg 绘图（一）">
+            <a href="/2018/01/09/ReactJS 初步/" title="下一篇: ReactJS 初步">
                 <i class="fa fa-angle-right"></i>
             </a>
         
