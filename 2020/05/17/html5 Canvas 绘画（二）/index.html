@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="gaea2" />
+
+
+
+<meta name="description" content="本文包括路径、图像、变形操作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html5 Canvas 绘画（二）">
+<meta property="og:url" content="http://yoursite.com/2020/05/17/html5 Canvas 绘画（二）/index.html">
+<meta property="og:site_name" content="gaea2">
+<meta property="og:description" content="本文包括路径、图像、变形操作。">
+<meta property="og:image" content="http://yoursite.com/images/path.png">
+<meta property="og:updated_time" content="2022-02-21T09:01:11.381Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="html5 Canvas 绘画（二）">
+<meta name="twitter:description" content="本文包括路径、图像、变形操作。">
+<meta name="twitter:image" content="http://yoursite.com/images/path.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>html5 Canvas 绘画（二） | gaea2</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">gaea2</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">gaea2 | 前端笔记</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/随笔/">随笔</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" href="https://github.com/Gaea2" title="GitHub"></a>
+                            
+                                <a class="fa Email" href="mailto:mikoto.gaea2@gmail.com" title="Email"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES5/">ES5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/automation/">automation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/geolocation/">geolocation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grunt/">grunt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsonp/">jsonp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ps/">ps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sessionStorage/">sessionStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svg/">svg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://zzukylin.github.io/">zzukylin&#39;s blog</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">gaea2</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">gaea2</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">gaea2 | 前端笔记</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/随笔/">随笔</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/Gaea2" title="GitHub"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:mikoto.gaea2@gmail.com" title="Email"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-html5 Canvas 绘画（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/05/17/html5 Canvas 绘画（二）/" class="article-date">
+      <time datetime="2020-05-17T11:19:59.000Z" itemprop="datePublished">2020-05-17</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      html5 Canvas 绘画（二）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html5/">html5</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>本文包括路径、图像、变形操作。</p>
+</blockquote>
+<a id="more"></a>
+<h5 id="Canvas-路径"><a href="#Canvas-路径" class="headerlink" title="Canvas 路径"></a>Canvas 路径</h5><p>path：由多个坐标点组成任意形状，路径不可见，可用”描边”,”填充”,”裁剪”。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ctx.beginPath();<span class="comment">// 开始一条新路径</span></span><br><span class="line">ctx.closePath();<span class="comment">// 闭合当前路径</span></span><br><span class="line">ctx.moveTo(x,y);<span class="comment">// 移动到指定点</span></span><br><span class="line">ctx.lineTo(x,y);<span class="comment">// 从当前点到指定点画直线</span></span><br><span class="line">ctx.arc(cx,cy,r,start,end);<span class="comment">// 绘制圆拱路径(圆心,圆心,半径,开始弧度,结束弧度)</span></span><br><span class="line"><span class="comment">// 角度-&gt;弧度：角度*Math.PI/180</span></span><br><span class="line">ctx.stroke();<span class="comment">// 描边</span></span><br><span class="line">ctx.fill();<span class="comment">// 填充</span></span><br></pre></td></tr></table></figure>
+<p>e.g.</p>
+<p>效果</p>
+<p><img src="/images/path.png" alt="path"></p>
+<p>css代码<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">canvas</span>&#123;<span class="attribute">background</span>:<span class="number">#DCDCDC</span>;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>html代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"c2"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>js代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">c2.width = <span class="number">500</span>;</span><br><span class="line">c2.height = <span class="number">400</span>;</span><br><span class="line"><span class="keyword">var</span> ctx = c2.getContext(<span class="string">"2d"</span>);<span class="comment">// 获取画笔</span></span><br><span class="line">ctx.beginPath();<span class="comment">// 开始一条新路径</span></span><br><span class="line">ctx.moveTo(<span class="number">250</span>,<span class="number">200</span>);<span class="comment">// 移动到指定点</span></span><br><span class="line">ctx.lineTo(<span class="number">300</span>,<span class="number">200</span>);<span class="comment">// 从当前点到指定点画直线</span></span><br><span class="line">ctx.lineTo(<span class="number">300</span>,<span class="number">300</span>);</span><br><span class="line">ctx.lineTo(<span class="number">250</span>,<span class="number">300</span>);</span><br><span class="line">ctx.closePath();<span class="comment">// 闭合路径</span></span><br><span class="line">ctx.lineWidth=<span class="number">3</span>;</span><br><span class="line">ctx.strokeStyle=<span class="string">"#218868"</span>;<span class="comment">// 描边样式</span></span><br><span class="line">ctx.stroke();<span class="comment">// 描边</span></span><br><span class="line"></span><br><span class="line">ctx.beginPath();<span class="comment">// 开始一条新路径</span></span><br><span class="line">ctx.arc(<span class="number">250</span>,<span class="number">200</span>,<span class="number">50</span>,<span class="number">0</span>,<span class="number">360</span>*<span class="built_in">Math</span>.PI/<span class="number">180</span>);<span class="comment">// 绘制圆拱路径(圆心,圆心,半径,开始弧度,结束弧度)</span></span><br><span class="line"><span class="comment">// 角度-&gt;弧度：角度*Math.PI/180</span></span><br><span class="line">ctx.stroke();<span class="comment">// 描边</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="Canvas-图像"><a href="#Canvas-图像" class="headerlink" title="Canvas 图像"></a>Canvas 图像</h5><p>canvas 属于客户端技术，图片在服务器中，所以浏览器必须先下载要绘制的图片，且等待图片异步加载完成。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p3 = <span class="keyword">new</span> Image();</span><br><span class="line">p3.src = <span class="string">"img/p3.png"</span>;<span class="comment">// 向图片发送异请求</span></span><br><span class="line">p3.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">// 图片下载完成自动触发事件</span></span><br><span class="line">   ctx.drawImage(p3,x,y);<span class="comment">// 原始大小绘图</span></span><br><span class="line">   ctx.drawImage(p3,x,y,w,h);<span class="comment">// 拉伸绘图</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="Canvas-变形操作"><a href="#Canvas-变形操作" class="headerlink" title="Canvas 变形操作"></a>Canvas 变形操作</h5><p>canvas 绘图的变形操作，可针对某一个图像/图形绘制过程中进行变形。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ctx.rotate(弧度);<span class="comment">// 旋转画笔，轴点画布的原点</span></span><br><span class="line">ctx.translate(x,y);<span class="comment">// 将整个画布的原点平移到指定点</span></span><br><span class="line">ctx.save();<span class="comment">// 保存画笔所有变形状态值 (原点,旋转角度);</span></span><br><span class="line">ctx.restore();<span class="comment">// 恢复画笔所有变形状态值</span></span><br></pre></td></tr></table></figure>
+<p>e.g.</p>
+<p>持续旋转的图像。</p>
+<p>css、html代码同上</p>
+<p>js代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ctx = c2.getContext(<span class="string">"2d"</span>);</span><br><span class="line"><span class="keyword">var</span> p3 = <span class="keyword">new</span> Image();</span><br><span class="line">p3.src = <span class="string">"img/p3.png"</span>;</span><br><span class="line">p3.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  ctx.translate(<span class="number">250</span>,<span class="number">200</span>);<span class="comment">// 将整个画布的原点平移到指定点</span></span><br><span class="line">  <span class="keyword">var</span> timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    ctx.clearRect(<span class="number">-100</span>,<span class="number">-50</span>,<span class="number">500</span>,<span class="number">400</span>);</span><br><span class="line">    ctx.rotate(<span class="number">10</span>*<span class="built_in">Math</span>.PI/<span class="number">180</span>);<span class="comment">// 旋转画笔</span></span><br><span class="line">    ctx.drawImage(p3,<span class="number">-100</span>,<span class="number">-50</span>);<span class="comment">// 原始大小绘图</span></span><br><span class="line">  &#125;,<span class="number">50</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/05/26/html5 svg 绘图（一）/">
+                    html5 svg 绘图（一）
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/05/15/html5 Canvas 绘画（一）/">
+                    html5 Canvas 绘画（一）
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#Canvas-路径"><span class="toc-number">1.</span> <span class="toc-text">Canvas 路径</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Canvas-图像"><span class="toc-number">2.</span> <span class="toc-text">Canvas 图像</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Canvas-变形操作"><span class="toc-number">3.</span> <span class="toc-text">Canvas 变形操作</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2020/05/17/html5 Canvas 绘画（二）/" data-title="html5 Canvas 绘画（二）" data-url="http://yoursite.com/2020/05/17/html5 Canvas 绘画（二）/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"mikotocloud"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/05/26/html5 svg 绘图（一）/" title="上一篇: html5 svg 绘图（一）">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/05/15/html5 Canvas 绘画（一）/" title="下一篇: html5 Canvas 绘画（一）">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/06/13/使用微信小程序画布生成海报/">微信小程序canvas 生成海报保存到相册</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/11/ReactJS 状态和生命周期/">ReactJS 状态和生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/10/ReactJS 组件间通信/">ReactJS 组件间通信</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/09/ReactJS 初步/">ReactJS 初步</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/03/css3 知识梳理（二）/">css3 知识梳理（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/02/css3 知识梳理（一）/">css3 知识梳理（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/22/跨域/">跨域</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/04/Bootstrap 响应式布局（三）/">Bootstrap 响应式布局（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/03/Bootstrap 响应式布局（二）/">Bootstrap 响应式布局（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/02/Bootstrap 响应式布局（一）/">Bootstrap 响应式布局（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/16/html5 WebSocket/">html5 WebSocket</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/15/html5 Web存储(Web Storage)/">html5 Web存储(Web Storage)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/14/html5 Web Worker/">html5 web worker</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/14/html5 拖动上传文件/">html5 拖动上传文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/13/html5 上传文件/">html5 上传文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/13/html5 拖放API/">html5 拖放API</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/12/html5 地理定位/">html5 地理定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/28/html5 svg 绘图（二）/">html5 svg 绘图（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/26/html5 svg 绘图（一）/">html5 svg 绘图（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/17/html5 Canvas 绘画（二）/">html5 Canvas 绘画（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/15/html5 Canvas 绘画（一）/">html5 Canvas 绘画（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/12/ES6 特性/">ES6 特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/ES5 特性/">ES5 特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/26/Vue2.0 与远程服务端通信/">Vue2.0 与远程服务端通信</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/25/Vue2.0 嵌套路由/">Vue2.0 嵌套路由</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/22/Vue2.0 VueRouter 实现参数传递/">Vue2.0 VueRouter 实现参数传递</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/15/Vue2.0 SPA 单页应用/">Vue2.0 SPA 单页应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/12/Vue2.0 兄弟组件间通信/">Vue2.0 兄弟组件间通信</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/20/浅析Vue2.0 v-model 的实现原理/">浅析Vue2.0 v-model 的实现原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/15/Vue2.0 父子组件间通信（三）/">Vue2.0 父子组件间通信（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/11/Vue2.0 父子组件间通信（二）/">Vue2.0 父子组件间通信（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/Vue2.0 父子组件间通信（一）/">Vue2.0 父子组件间通信（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/27/Vue2.0 中的计算属性和侦听器/">Vue2.0 中的计算属性和侦听器</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/26/Vue2.0 组件的生命周期/">Vue2.0 组件的生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/22/Vue2.0 组件/">Vue2.0 组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/14/当hexo d 部署出现各种问题时/">当hexo d 部署出现各种问题时</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/12/わが征くは星の大海/">わが征くは星の大海</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/06/Vue2.0 自定义过滤器/">Vue2.0 自定义过滤器</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/05/Vue2.0 自定义指令/">Vue2.0 自定义指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/18/Vue2.0 页码练习/">Vue2.0 页码练习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/29/js内存泄漏/">js内存泄漏</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/25/虚拟机装 CentOs 7 黑屏解决办法/">虚拟机装 CentOs 7 黑屏解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/18/gulp前端自动化/">gulp前端自动化</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/10/哈希表实现“数组中只出现一次的数字”/">哈希表实现“数组中只出现一次的数字”</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/06/jsfk有点好玩/">jsf*k meaning</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/js正则表达式/">js正则表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/js进制转换/">js进制转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/也谈谈闭包/">也谈谈闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/16/grunt前端自动化/">grunt前端自动化</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/15/DOCTYPE与浏览器模式浅析/">DOCTYPE与浏览器模式浅析</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/12/Ajax中的get和post两种请求方式的异同/">Ajax中的get和post两种请求方式的异同</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/29/hexo搭建过程/">win下Hexo博客的搭建过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/20/js DOM操作/">原生js学习——DOM操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/18/ps切图/">ps切图篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/09/css center/">css居中各种实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/Markdown语法/">Markdown 语法学习</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2022 gaea2
+            </div>
+            
+        </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="gaea2" />
+
+
+
+<meta name="description" content="本文包括css hack、2d 转换、过渡、动画等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css3 知识梳理（二）">
+<meta property="og:url" content="http://yoursite.com/2020/11/03/css3 知识梳理（二）/index.html">
+<meta property="og:site_name" content="gaea2">
+<meta property="og:description" content="本文包括css hack、2d 转换、过渡、动画等。">
+<meta property="og:updated_time" content="2022-02-21T09:05:04.911Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css3 知识梳理（二）">
+<meta name="twitter:description" content="本文包括css hack、2d 转换、过渡、动画等。">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>css3 知识梳理（二） | gaea2</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">gaea2</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">gaea2 | 前端笔记</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/随笔/">随笔</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" href="https://github.com/Gaea2" title="GitHub"></a>
+                            
+                                <a class="fa Email" href="mailto:mikoto.gaea2@gmail.com" title="Email"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES5/">ES5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactJS/">ReactJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebSocket/">WebSocket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/automation/">automation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/geolocation/">geolocation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grunt/">grunt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsonp/">jsonp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/localStorage/">localStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ps/">ps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sessionStorage/">sessionStorage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svg/">svg</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://zzukylin.github.io/">zzukylin&#39;s blog</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">gaea2</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">gaea2</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">gaea2 | 前端笔记</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/随笔/">随笔</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/Gaea2" title="GitHub"></a>
+                            
+                                <a class="fa Email" target="_blank" href="mailto:mikoto.gaea2@gmail.com" title="Email"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-css3 知识梳理（二）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/11/03/css3 知识梳理（二）/" class="article-date">
+      <time datetime="2020-11-03T11:19:59.000Z" itemprop="datePublished">2020-11-03</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      css3 知识梳理（二）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css3/">css3</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>本文包括css hack、2d 转换、过渡、动画等。</p>
+</blockquote>
+<a id="more"></a>
+<ol>
+<li><p>CSS Hack</p>
+<ol>
+<li>解决问题<br> 解决 IE 浏览器的兼容性问题<br> 针对不同的浏览器编写不同的CSS代码</li>
+<li>CSSHack 的原理<br> 使用CSS样式的优先级来解决兼容性问题的</li>
+<li><p>CSSHack 的实现方式</p>
+<ol>
+<li>CSS类内部Hack<br> 在样式属性名称前或属性值后增加前后缀，以便识别不同的浏览器<br> <code>+</code> ：IE6,7的前缀<br> <code>-</code> ：IE6的前缀</li>
+<li><p>CSS选择器Hack<br> 在选择器前增加前缀以便识别不同的浏览器<br> <code>*</code> : 识别IE6<br> <code>*+</code>: 识别IE7</p>
+<p> <code>*div</code>{ IE6的显示效果 }<br> <code>*+div</code>{ IE7的显示效果 }</p>
+</li>
+<li>HTML头部引用Hack<br> 使用IE条件注释来判断IE浏览器的版本，从而执行不同的代码<br> 语法：<pre><code>&lt;!--[if 条件 IE 版本号]&gt;
+    满足条件要执行的HTML代码
+&lt;![endif]--&gt;
+版本号：6-10
+条件：
+    1. gt
+        只有在大于指定版本的浏览器中执行代码
+        &lt;!--[if gt IE 6]&gt;
+            该段内容只有在IE6以上的浏览器中执行
+        &lt;![endif]--&gt;
+    2. gte
+        大于等于
+    3. lt
+        小于
+    4. lte
+        小于等于
+    5. !
+        在指定条件版本以外的浏览器中执行操作
+    6. 省略条件
+        只在指定版本的浏览器中执行操作
+</code></pre></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>转换<ol>
+<li>什么是转换<br> 改变元素在页面中的位置，大小，角度以及形状的一种方式<br> 2D转换：只在x 轴 和y 轴上发生的转换效果<br> 3D转换：增加在z 轴的转换效果</li>
+<li>转换属性<ol>
+<li>转换属性<br> 属性：transform<br> 取值：<pre><code>1. none ：默认值，无任何转换效果
+2. transform-function
+    表示1个或多个转换函数
+    如果是多个转换函数的话，中间用 空格 隔开
+</code></pre></li>
+<li>转换原点<br> 属性：transform-origin<br> 取值：数值 / 百分比 / 关键字<pre><code>2个值：表示原点在 x轴 和 y轴 上的位置
+3个值：表示原点在 x轴，y轴，z轴上的位置
+</code></pre> 默认的原点在 元素的中心位置处<pre><code>(center center)
+(50% 50%)
+</code></pre></li>
+</ol>
+</li>
+<li>2D转换<ol>
+<li>位移<ol>
+<li>什么是位移<br> 改变元素在页面中的位置</li>
+<li>语法<br> 属性：transform<br> 取值：<pre><code>1. translate(x)
+    指定元素在x轴上的位移距离
+    取值为正，元素右移
+    取值为负，元素左移
+2. translate(x,y)
+    x : 同上
+    y : 指定元素在y轴上的位移距离
+        取值为正，元素下移
+        取值为负，元素上移
+3. translateX(x)
+4. translateY(y)
+</code></pre></li>
+</ol>
+</li>
+<li>缩放<ol>
+<li>什么是缩放<br> 改变元素在页面中的尺寸</li>
+<li>语法<br> 属性：transform<br> 取值：<pre><code>1. scale(value)
+    value:横向或纵向的缩放比例
+    value :
+        默认值为1
+        &gt;1 : 放大
+        &lt;1 : 缩小
+        负数 : 物极必反
+2. scale(x,y)    
+    x : 横向缩放比例
+    y : 纵向缩放比例
+3. 单向缩放函数
+    scaleX(x)
+    scaleY(y)
+</code></pre></li>
+</ol>
+</li>
+<li>旋转<ol>
+<li>什么是旋转<br> 改变元素在页面上的角度</li>
+<li>语法<br> 属性：transform<br> 取值：<pre><code>rotate(ndeg);
+    n取值为正，顺时针旋转
+    n取值为负，逆时针旋转
+</code></pre> 注意：<pre><code>1. 转换原点会影响最终的转换效果
+2. 元素旋转时是连同坐标轴一起旋转，会影响后续的位移操作
+</code></pre></li>
+</ol>
+</li>
+<li>倾斜<ol>
+<li>什么是倾斜<br> 改变元素在页面中的形状</li>
+<li>语法<br> 属性:transform<br> 取值:<pre><code>1. skewX(xdeg)
+    让元素向着x轴的方向产生倾斜效果，实际上是改变y轴的倾斜角度值
+    x 取值为正，y轴逆时针倾斜
+    x 取值为负，y轴顺时针倾斜
+2. skewY(ydeg)
+    让元素向着y轴的方向产生倾斜效果，实际上是改变x轴的倾斜角度值
+    y取值为正，x轴顺时针倾斜
+    y取值为负，x轴逆时针倾斜
+3. skew(x)
+    等同于 skewX()
+4. skew(x,y)
+</code></pre></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>3D转换<ol>
+<li>透视距离<br> 模拟人的眼睛到3D转换元素之间的距离<br> 属性：perspective<br> 注意：该属性要加在3d转换元素的父元素上</li>
+<li>3D旋转<br> 属性：transform<br> 取值：<pre><code>1. rotateX(xdeg)
+    以x轴为中心轴，旋转元素的角度
+2. rotateY(ydeg)
+    以y轴为中心轴，旋转元素的角度
+3. rotateZ(zdeg)
+    以z轴为中心轴，旋转元素的角度
+4. rotate3D(x,y,z,ndeg)
+    x,y,z取值为大于0的数字时，表示该轴要参与旋转，取值为0则不参与旋转
+    rotate3d(1,0,0,45deg);
+    rotate3d(1,1,1,0deg)
+</code></pre></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>过渡<ol>
+<li>什么是过渡<br> 使得CSS属性值，在一段时间内平缓变化的效果</li>
+<li>过渡的语法 - 4属性<ol>
+<li>指定过渡属性<br> 作用：指定哪个属性值在变化的时候需要使用过的效果来体现<br> 属性：transition-property<br> 取值：<pre><code>1. all
+    能使用过渡的属性，一律用过渡体现
+2. 具体属性名
+ex:
+    1. transition-property:background;
+    2. transition-property:border-radius;
+    3. transition-property:all;
+</code></pre> 允许设置过渡效果的属性：<pre><code>1. 颜色属性
+2. 取值为数字的属性
+3. 转换属性 - transform
+4. 阴影属性
+5. 渐变属性
+6. visibility属性
+</code></pre></li>
+<li>指定过渡时长<br> 作用：指定在多长时间内完成过渡操作<br> 属性：transition-duration<br> 取值：以 s 或 ms 为单位的数值<pre><code>1000ms = 1s
+</code></pre></li>
+<li>指定过渡速度时间曲线函数<br> 属性：transition-timing-function<br> 取值：<pre><code>1. ease 
+    默认值，慢速开始，快速变快，慢速结束
+2. linear
+    匀速
+3. ease-in
+    慢速开始，加速结束
+4. ease-out
+    快速开始，慢速结束
+5. ease-in-out
+    慢速开始和结束，中间先加速后减速
+</code></pre></li>
+<li>指定过渡延迟时间<br> 属性：transition-delay<br> 取值：以 s 或 ms 为单位的数值</li>
+</ol>
+</li>
+<li>过渡属性的编写位置<ol>
+<li>将过渡声明在元素声明的样式中<br> 既管去，又管回</li>
+<li>将过渡声明在触发的操作中(hover)<br> 只管去，不管回</li>
+</ol>
+</li>
+<li>过渡的缩写<br> transition:property duration timing-function delay;<br> transition:background 2s linear,border-raidus 2s;<br> transition:all 2s;</li>
+</ol>
+</li>
+<li><p>动画</p>
+<ol>
+<li><p>什么是动画<br> 使元素从一种样式逐渐变化为另一种样式<br> 即将多个过渡效果放在一起</p>
+<p> 动画是通过 “关键帧”，来控制动画的每一步<br> 关键帧：</p>
+<pre><code>1. 动画执行的时间点
+2. 在该时间点上的样式是什么
+</code></pre></li>
+<li>动画的使用步骤<ol>
+<li>声明动画<br> 为动画起名<br> 定义关键帧</li>
+<li>为元素调用动画<br> 指定元素调用的动画名称以及各个参数属性</li>
+</ol>
+</li>
+<li><p>声明动画</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">keyframes</span> 动画名称&#123;</span><br><span class="line">  <span class="comment">/*定义该动画中所有的关键帧*/</span>	</span><br><span class="line">  0%&#123;</span><br><span class="line">    <span class="comment">/*动画开始时元素的样式*/</span></span><br><span class="line">  &#125;</span><br><span class="line">  25%&#123;</span><br><span class="line">    <span class="comment">/*动画执行到1/4时元素的样式*/</span></span><br><span class="line">  &#125;</span><br><span class="line">  50%&#123;</span><br><span class="line">    <span class="comment">/*动画执行到1/2时元素的样式*/</span></span><br><span class="line">  &#125;</span><br><span class="line">  100%&#123;</span><br><span class="line">    <span class="comment">/*动画结束时元素的样式*/</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@-<span class="keyword">webkit</span>-<span class="keyword">keyframes</span> 动画名称&#123;</span><br><span class="line">  同上</span><br><span class="line">&#125;</span><br><span class="line">@-<span class="keyword">moz</span>-<span class="keyword">keyframes</span> 动画名称&#123;</span><br><span class="line">  同上</span><br><span class="line">&#125;</span><br><span class="line">@-<span class="keyword">o</span>-<span class="keyword">keyframes</span> 动画名称&#123;</span><br><span class="line">  同上</span><br><span class="line">&#125;</span><br><span class="line">@-<span class="keyword">ms</span>-<span class="keyword">keyframes</span> 动画名称&#123;</span><br><span class="line">  同上</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>动画属性(调用动画)</p>
+<ol>
+<li>animation-name<br> 作用：指定调用动画的名称</li>
+<li>animation-duration<br> 作用：指定动画执行一个周期的时长<br> 取值：以 s 或 ms 为单位的数值</li>
+<li>animation-timing-function<br> 作用：指定动画的速度时间曲线函数<br> 取值：ease,linear,ease-in,ease-out,ease-in-out</li>
+<li>animation-delay<br> 作用：指定动画的延迟时间<br> 取值：以 s 或 ms 为单位的数值</li>
+<li>animation-iteration-count<br> 作用：指定动画的播放次数<br> 取值：<pre><code>1. 具体数值
+2. infinite : 无限次播放
+</code></pre></li>
+<li>animation-direction<br> 作用：指定动画的播放方向<br> 取值：<pre><code>1. normal
+    默认值，正常播放 0% ~ 100%
+2. reverse
+    逆向播放 100% ~ 0%
+3. alternate
+    轮流播放
+    奇数次数播放时，正向播放
+    偶数次数播放时，逆向播放
+</code></pre></li>
+<li>动画的简洁写法<br> animation:name duration timing-function delay iteration-count direction;</li>
+<li>animation-fill-mode<br> 作用：规定动画在播放前或播放后的状态<br> 取值：<pre><code>1. none ：默认值
+2. forwards
+    动画播放完成后，将保持在最后一个帧的状态上
+3. backwards
+    动画播放前，延迟时间内，动画保持在第一个帧状态上
+4. both
+    forwards 和 backwards 的结合体
+</code></pre></li>
+<li>animation-play-state<br> 作用：指定动画是处于播放还是暂停的状态上<br> 取值：<pre><code>1. paused ：暂停
+2. running ：播放
+</code></pre></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2021/01/09/ReactJS 初步/">
+                    ReactJS 初步
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/11/02/css3 知识梳理（一）/">
+                    css3 知识梳理（一）
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2020/11/03/css3 知识梳理（二）/" data-title="css3 知识梳理（二）" data-url="http://yoursite.com/2020/11/03/css3 知识梳理（二）/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"mikotocloud"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2021/01/09/ReactJS 初步/" title="上一篇: ReactJS 初步">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/11/02/css3 知识梳理（一）/" title="下一篇: css3 知识梳理（一）">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/06/13/使用微信小程序画布生成海报/">微信小程序canvas 生成海报保存到相册</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/11/ReactJS 状态和生命周期/">ReactJS 状态和生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/10/ReactJS 组件间通信/">ReactJS 组件间通信</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/01/09/ReactJS 初步/">ReactJS 初步</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/03/css3 知识梳理（二）/">css3 知识梳理（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/11/02/css3 知识梳理（一）/">css3 知识梳理（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/09/22/跨域/">跨域</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/04/Bootstrap 响应式布局（三）/">Bootstrap 响应式布局（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/03/Bootstrap 响应式布局（二）/">Bootstrap 响应式布局（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/08/02/Bootstrap 响应式布局（一）/">Bootstrap 响应式布局（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/16/html5 WebSocket/">html5 WebSocket</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/15/html5 Web存储(Web Storage)/">html5 Web存储(Web Storage)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/14/html5 Web Worker/">html5 web worker</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/14/html5 拖动上传文件/">html5 拖动上传文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/13/html5 上传文件/">html5 上传文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/13/html5 拖放API/">html5 拖放API</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/06/12/html5 地理定位/">html5 地理定位</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/28/html5 svg 绘图（二）/">html5 svg 绘图（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/26/html5 svg 绘图（一）/">html5 svg 绘图（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/17/html5 Canvas 绘画（二）/">html5 Canvas 绘画（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/15/html5 Canvas 绘画（一）/">html5 Canvas 绘画（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/12/ES6 特性/">ES6 特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/11/ES5 特性/">ES5 特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/26/Vue2.0 与远程服务端通信/">Vue2.0 与远程服务端通信</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/25/Vue2.0 嵌套路由/">Vue2.0 嵌套路由</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/22/Vue2.0 VueRouter 实现参数传递/">Vue2.0 VueRouter 实现参数传递</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/15/Vue2.0 SPA 单页应用/">Vue2.0 SPA 单页应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/12/Vue2.0 兄弟组件间通信/">Vue2.0 兄弟组件间通信</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/20/浅析Vue2.0 v-model 的实现原理/">浅析Vue2.0 v-model 的实现原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/15/Vue2.0 父子组件间通信（三）/">Vue2.0 父子组件间通信（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/11/Vue2.0 父子组件间通信（二）/">Vue2.0 父子组件间通信（二）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/10/Vue2.0 父子组件间通信（一）/">Vue2.0 父子组件间通信（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/27/Vue2.0 中的计算属性和侦听器/">Vue2.0 中的计算属性和侦听器</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/26/Vue2.0 组件的生命周期/">Vue2.0 组件的生命周期</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/22/Vue2.0 组件/">Vue2.0 组件</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/14/当hexo d 部署出现各种问题时/">当hexo d 部署出现各种问题时</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/12/わが征くは星の大海/">わが征くは星の大海</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/06/Vue2.0 自定义过滤器/">Vue2.0 自定义过滤器</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/05/Vue2.0 自定义指令/">Vue2.0 自定义指令</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/18/Vue2.0 页码练习/">Vue2.0 页码练习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/29/js内存泄漏/">js内存泄漏</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/25/虚拟机装 CentOs 7 黑屏解决办法/">虚拟机装 CentOs 7 黑屏解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/18/gulp前端自动化/">gulp前端自动化</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/10/哈希表实现“数组中只出现一次的数字”/">哈希表实现“数组中只出现一次的数字”</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/06/jsfk有点好玩/">jsf*k meaning</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/11/02/js正则表达式/">js正则表达式</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/26/js进制转换/">js进制转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/22/也谈谈闭包/">也谈谈闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/16/grunt前端自动化/">grunt前端自动化</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/15/DOCTYPE与浏览器模式浅析/">DOCTYPE与浏览器模式浅析</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/10/12/Ajax中的get和post两种请求方式的异同/">Ajax中的get和post两种请求方式的异同</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/29/hexo搭建过程/">win下Hexo博客的搭建过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/20/js DOM操作/">原生js学习——DOM操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/18/ps切图/">ps切图篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/09/09/css center/">css居中各种实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/08/26/Markdown语法/">Markdown 语法学习</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2022 gaea2
+            </div>
+            
+        </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
